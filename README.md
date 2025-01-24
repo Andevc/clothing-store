@@ -23,4 +23,4 @@
    ```
 --------------------------
 
-### La parte del usuario todavia me falta completar, por eso no lo subo, una vez que lo tenga avanzado lo subire y si tienen instalado `git/git bash` en sus laptop/pc les sera mas facil actualizar el proyecto segun lo que vaya actualizando en este repositorio, tambien si gustan pueden crear ramas (forks) de este proyecto
+NOTA: La parte del usuario todavia me falta completar, por eso no lo subo, una vez que lo tenga avanzado lo subire y si tienen instalado `git/git bash` en sus laptop/pc les sera mas facil actualizar el proyecto segun lo que vaya actualizando en este repositorio, tambien si gustan pueden crear ramas (forks) de este proyecto
