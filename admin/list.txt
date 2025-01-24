@@ -1,0 +1,66 @@
+admin/
+    customer_delete.php
+    dashboard.php
+    delete_bundle.php
+    delete_cat.php
+    delete_coupon.php
+    delete_manufacturer.php
+    delete_p_cat.php
+    delete_product.php
+    delete_rel.php
+    edit_about_us.php
+    edit_bundle.php
+    edit_cat.php
+    edit_contact_us.php
+    edit_coupon.php
+    edit_manufacturer.php
+    edit_p_cat.php
+    edit_product.php
+    edit_rel.php
+    index.php
+    insert_bundle.php
+    insert_cat.php
+    insert_coupon.php
+    insert_manufacturer.php
+    insert_p_cat.php
+    insert_product.php
+    insert_rel.php
+    insert_user.php
+    login.php
+    logout.php
+    order_delete.php
+    other_images
+    payment_delete.php
+    user_delete.php
+    user_profile.php
+    view_bundles.php
+    view_cats.php
+    view_coupons.php
+    view_customers.php
+    view_manufacturers.php
+    view_orders.php
+    view_payments.php
+    view_p_cats.php
+    view_products.php
+    view_rel.php
+    view_users.php
+
+./admin_images:
+user-profile-min.png
+
+./css:
+bootstrap.min.css
+login.css
+style.css
+
+./includes:
+01 LOGIN DETAILS & PROJECT INFO.txt
+db.php
+footer.php
+header.php
+sidebar.php
+
+./js:
+01 LOGIN DETAILS & PROJECT INFO.txt
+bootstrap.min.js
+jquery.min.js
