@@ -10,14 +10,17 @@
     <link rel="icon" href="./public/lg.png" type="image/png">
     <title>CHIRK</title>
     <!-- <link href="styles/bootstrap.min.css" rel="stylesheet"> -->
-    <link href="styles/backend.css" rel="stylesheet">
+    <link href="/assets/styles/backend.css" rel="stylesheet">
 
 
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="assets/styles/style.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/styles/componets-style.css" type="text/css">
+
+    
+
+    <!-- <link rel="stylesheet" href="assets/styles/componets-style.css" type="text/css"> -->
+     <link rel="stylesheet" href="/assets/styles/styles-front.css" type="text/css">
 
     <!-- Swiper JS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />

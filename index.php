@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include 'database/db_connector.php';
+
 include 'includes/header.php';
 include 'includes/navbar.php';
 ?>
@@ -12,6 +12,7 @@ include 'includes/navbar.php';
                   <h1 class="text -2xl">
                         Bienvenido a CHIRK
                   </h1>
+                  <img src="./assets/images/BackgroundMain.webp" alt="">
                   <p>
                         Donde redefinimos tu estilo con nuestra exclusiva
                         colección de ropa para todas las ocasiones.
@@ -25,7 +26,7 @@ include 'includes/navbar.php';
             <div class="swiper mySwiper">
 
                   <?php
-                        echo "<div class='swiper-wrapper'>";
+                        /* echo "<div class='swiper-wrapper'>";
 
                         $query = 'SELECT * FROM `products` p JOIN `manufacturers` m ON p.manufacturer_id = m.manufacturer_id WHERE m.manufacturer_top="yes"';
                         $res = $conn->query($query);
@@ -67,7 +68,7 @@ include 'includes/navbar.php';
                         // Cerrar la conexión
                         $conn->close();
 
-                        echo "</div>";  // Fin de card-container
+                        echo "</div>";  // Fin de card-container */
                   ?>
 
                   

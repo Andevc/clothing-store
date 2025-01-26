@@ -2,22 +2,18 @@
     "name": "shop/ecommerce",
     "type": "project",
     "require": {
-        "cloudinary/cloudinary_php": "dev-master",
-        "illuminate/database": "12.x-dev",
-        "dompdf/dompdf": "dev-master",
-        "vlucas/phpdotenv": "^5.6@dev"
+        "cloudinary/cloudinary_php": "^2.0",
+        "illuminate/database": "^8.0",
+        "dompdf/dompdf": "^2.0.0",
+        "vlucas/phpdotenv": "^5.6",
+        "phenx/php-svg-lib": "^0.5.2"
     },
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Shop\\Ecommerce\\": "app/"
-        }
-    },
     "authors": [
         {
             "name": "Andevc",
             "email": "escobarhandres@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }

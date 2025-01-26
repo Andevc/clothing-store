@@ -52,6 +52,7 @@
                                     <th>Price</th>
                                     <th>Sold</th>
                                     <th>Keywords</th>
+                                    <th>Stock</th>
                                     <th>Date</th>
                                     <th>Delete</th>
                                     <th>Edit</th>
@@ -71,6 +72,7 @@
                                         <td><?= getSoldCount($product->product_id) ; ?></td>
 
                                         <td><?= htmlspecialchars($product->product_keywords); ?></td>
+                                        <td><?= htmlspecialchars($product->product_stock); ?></td>
                                         <td><?= htmlspecialchars($product->date); ?></td>
                                         
                                         <td>

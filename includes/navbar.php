@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav class="navbar-x">
     
     <a class="navbar-logo" href="index.php">
         <!-- <img class="navbar-logo-img" src="./public/log-w.png" alt="CHRIK logotype" > -->
@@ -73,9 +73,9 @@
 
         </li> -->
 
-        <li class="login__item">
+        <!-- <li class="login__item">
             <?php
-                if (!isset($_SESSION['customer_email'])) {
+                /* if (!isset($_SESSION['customer_email'])) {
                     echo '<a href="user/register.php" class="login__link">
                             Register
                         </a>';
@@ -84,18 +84,18 @@
                     echo '<a href="customer/my_account.php?my_orders" class="login__link">
                             My Account
                         </a>';
-                }
+                } */
             ?>
         </li>
         <li class="login__item">
             <?php
-                if (!isset($_SESSION['customer_email'])) {
+                /* if (!isset($_SESSION['customer_email'])) {
                 echo '<a href="checkout.php" class="login__link">Login</a>';
                 } else {
                 echo '<a href="logout.php" class="login__link">Logout</a>';
-                }
+                } */
             ?>
-        </li>
+        </li> -->
     
     </ul>    
 </nav>
