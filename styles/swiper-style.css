@@ -1,0 +1,35 @@
+.products{
+    
+    margin: 0 auto;
+    height: 550px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    align-items: center;
+}
+.products-top{
+    
+    position: relative;
+    
+}
+
+
+.swiper { 
+
+    width: 85vw; 
+    height: 400px; 
+    
+    
+} 
+
+.swiper-slide { 
+    margin: 0;
+    background-color: white;
+    width: 80%;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 18px; 
+    font-size: 22px; 
+    font-weight: bold; 
+    color: #191919; 
+}

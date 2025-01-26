@@ -1,8 +1,17 @@
 <?php
 session_start();
-
+use Illuminate\Database\Capsule\Manager as DB;
+require_once __DIR__ . '/../vendor/autoload.php';
+    require_once __DIR__ . '/../database/db_connector.php';
 require_once __DIR__ . '/includes/header.php';
 require_once __DIR__ . '/includes/navbar.php';
+
+// Consulta utilizando Eloquent
+$products = DB::table('products as p')
+    ->join('manufacturers as m', 'p.manufacturer_id', '=', 'm.manufacturer_id')
+    ->where('m.manufacturer_top', '=', 'yes')
+    ->get();
+
 
 
 
@@ -52,7 +61,7 @@ require_once __DIR__ . '/includes/navbar.php';
             <div class="swiper mySwiper">
 
                   <?php
-                        /* echo "<div class='swiper-wrapper'>";
+                        echo "<div class='swiper-wrapper'>";
 
                         $query = 'SELECT * FROM `products` p JOIN `manufacturers` m ON p.manufacturer_id = m.manufacturer_id WHERE m.manufacturer_top="yes"';
                         $res = $conn->query($query);
@@ -94,7 +103,7 @@ require_once __DIR__ . '/includes/navbar.php';
                         // Cerrar la conexión
                         $conn->close();
 
-                        echo "</div>";  // Fin de card-container */
+                        echo "</div>";  // Fin de card-container
                   ?>
 
                   
@@ -108,7 +117,7 @@ require_once __DIR__ . '/includes/navbar.php';
                         effect: "coverflow",
                         grabCursor: true,
                         centeredSlides: true,
-                        slidesPerView: "1.5",
+                        slidesPerView: "3",
                         loop: true,
                         autoplay: {
                               delay:5000,

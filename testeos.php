@@ -1,3 +1,17 @@
+<?php 
+    use Illuminate\Database\Capsule\Manager as DB;
+    require_once __DIR__ . '/vendor/autoload.php';
+    require_once __DIR__ . '/database/db_connector.php';
+    
+    
+    
+    $products = DB::table('products as p')
+        ->join('manufacturers as m', 'p.manufacturer_id', '=', 'm.manufacturer_id')
+        ->where('m.manufacturer_top', '=', 'yes')
+        ->get();
+    
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +22,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/fonts.css">
     <link rel="stylesheet" href="styles/landing-style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="styles/swiper-style.css">
 </head>
 <body>
 
     <!-- Hero Section -->
-    <div class="hero" data-aos="fade-up">
+    <div class="hero-main" data-aos="fade-up">
         <div class="hero-content" data-aos="fade-left">
             <h1>Compra Facil con Chirk Fashion</h1>
             <p>Accede a las últimas tendencias y gestiona tus compras de forma rápida y eficiente con nuestra plataforma.</p>
@@ -21,27 +37,70 @@
         </div>
     </div>
 
+    <!-- Products Section -->
+    <div class="products container">
+        <h2 data-aos="fade-left">Productos Destacados</h2>
+        <div class="products-top">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                <?php foreach($products as $product): ?>
+                    <div class="swiper-slide">
+                        <p><?= htmlspecialchars($product->product_title); ?></p>
+                        <p><?= htmlspecialchars($product->product_price); ?></p>
+                    </div>
+                <?php endforeach ?>
+                </div>
+            </div>
+        </div>
+        
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> 
+ 
+        <!-- Initialize Swiper --> 
+        <script> 
+            var swiper = new Swiper(".mySwiper", { 
+                effect: "coverflow", 
+                grabCursor: true, 
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                loop: true,
+                autoplay:{
+                    delay:5000,
+                },
+                coverflowEffect: {
+                    rotate: 2,
+                    stretch: 2,
+                    depth: 75,
+                    modifier: 2.5,
+                    slideShadows: true,
+                        
+                },
+            }); 
+        </script>
+
+    </div>
+
     <!-- Features Section -->
-    <div class="features ">
+    <div class="features">
         <h2 data-aos="fade-right">Por qué elegir Chirk Fashion</h2>
         <div class="row">
             <div class="col-md-4 mb-4">
                 <div class="card p-4 text-center" data-aos="zoom-in">
-                    <img src="./assets/images/card-1.jpg"  alt="Facilidad de Uso">
+                    <img src="assets/images/card-1.jpg"  alt="Facilidad de Uso">
                     <h5 class="card-title">Facilidad de Uso</h5>
                     <p class="card-text">Nuestra plataforma es intuitiva y está diseñada para que compres sin complicaciones.</p>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
                 <div class="card p-4 text-center" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="./assets/images/card-2.jpg"  alt="Variedad de Productos">
+                    <img src="assets/images/card-2.jpg"  alt="Variedad de Productos">
                     <h5 class="card-title">Variedad de Productos</h5>
                     <p class="card-text">Encuentra una amplia gama de productos que se adaptan a tus necesidades.</p>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
                 <div class="card p-4 text-center" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="./assets/images/card-3.jpg"  alt="Soporte Confiable">
+                    <img src="assets/images/card-3.jpg"  alt="Soporte Confiable">
                     <h5 class="card-title">Soporte Confiable</h5>
                     <p class="card-text">Contamos con un equipo dedicado para ayudarte en cualquier momento.</p>
                 </div>
@@ -49,39 +108,7 @@
         </div>
     </div>
 
-    <!-- Products Section -->
-    <div class="products container">
-        <h2 data-aos="fade-left">Productos Destacados</h2>
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="card" data-aos="flip-left">
-                ./  <img src="product1.jpg"  alt="Producto 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Producto 1</h5>
-                        <p class="card-text">Descripción breve del producto.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card" data-aos="flip-left" data-aos-delay="100">
-                ./  <img src="product2.jpg"  alt="Producto 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Producto 2</h5>
-                        <p class="card-text">Descripción breve del producto.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card" data-aos="flip-left" data-aos-delay="200">
-                ./  <img src="product3.jpg"  alt="Producto 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Producto 3</h5>
-                        <p class="card-text">Descripción breve del producto.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <!-- Benefits Section -->
     <div class="benefits container">

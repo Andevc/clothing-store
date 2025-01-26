@@ -1,61 +1,71 @@
-body {
-    font-family: Arial, sans-serif;
+:root *{
+    box-sizing: border-box;
     margin: 0;
-    padding: 0;
-    background-color: #f5ede2;
 }
-.hero {
+body {
+    background-color: #f5ede2;
+    
+}
+.hero-main {
     background: url('../assets/images/bg-main.webp') no-repeat center center/cover;
-    color: 1c1c1c;
-    text-align: left;
-    padding: 5em;
+    color: #1c1c1c;
+    padding: 6em;
+    
+    
     min-height: 100dvh;
     display: flex;
-    justify-content: flex-start;
     align-items: center;
     font-family: var(--font-roboto);
     
+    
 }
-
-
-
 .hero-content{
     width: 45%;
-
     text-wrap: balance;
+    
 }
 
-.hero h1 {
+.hero-content h1 {
     font-family: var(--font-bailies);
     font-size: 4rem;
     margin-bottom: 20px;
 }
-.hero p {
+.hero-content p {
     font-family: var(--font-roboto);
     font-size: 1.2rem;
     margin-bottom: 30px;
 }
-.hero a {
+.hero-content a {
     margin-right: 15px;
 }
-.card {
+.card{
     border: none;
-    border-radius: 10px;
+    background: #f9f9f9;
+    padding: 1em;
+    border-radius: 2em;
+    
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
+}
+.card-b img{
+    width: 100%;
 }
 .card:hover {
     transform: scale(1.05);
 }
 .features {
-    padding: 5em 5em;
+    padding: 3em 2em;
+    width: 90%;
+    margin: 0 auto;
+    
     
 }
+
 .features h2 {
     font-family: var(--font-bailies);
     text-align: center;
     margin-bottom: 40px;
-    font-size: 3rem;
+    font-size: 3em;
     color: #333;
 }
 .features .card {
@@ -65,36 +75,55 @@ body {
 }
 .card img{
     border-radius: 1em;
+    width: 100%;
 }
 .card h5{
-    
+    font-size: var(--font-roboto);
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-top: 1em;
+}
+.card p{
+    color: #555050;
 }
 .products {
     padding: 50px 20px;
-    background-color: #fff;
+
+    
 }
-.products h2 {
+.products h2{
+    font-family: var(--font-bailies);
     text-align: center;
     margin-bottom: 40px;
-    font-size: 2rem;
-    color: #333;
+    font-size: 3em;
+    color: #191919;
 }
 .benefits {
-    padding: 50px 20px;
-    background-color: #f9f9f9;
+    padding: 6em;
+    
+}
+
+.benefits-content, .features-content, .products-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2em;
+}
+.benefits-content > .card{
+    padding: 1em;
+    text-align: center;
+    background-color: #ffffff;
+    
 }
 .benefits h2 {
+    font-family: var(--font-bailies);
     text-align: center;
     margin-bottom: 40px;
-    font-size: 2rem;
+    font-size: 3em;
     color: #333;
 }
-.benefit {
-    text-align: center;
-    margin-bottom: 20px;
-}
+
 .footer {
-    background-color: #333;
+    background-color: #474145;
     color: white;
     padding: 20px;
     text-align: center;
