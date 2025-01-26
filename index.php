@@ -1,24 +1,50 @@
 <?php
 session_start();
 
+require_once __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/includes/navbar.php';
 
-include 'includes/header.php';
-include 'includes/navbar.php';
+
+
 ?>
 
 <main>
-      <section class="container-main">
+      <section class="container-main" >
             <section class="main-content">
-                  <h1 class="text -2xl">
-                        Bienvenido a CHIRK
+                  <h1>
+                        Neon Fashions
                   </h1>
-                  <img src="./assets/images/BackgroundMain.webp" alt="">
+                  
                   <p>
-                        Donde redefinimos tu estilo con nuestra exclusiva
-                        colección de ropa para todas las ocasiones.
-                        Descubre una amplia gama de prendas diseñadas para destacar tu
-                        personalidad y brindarte comodidad sin sacrificar elegancia
+                  Where bold style meets vibrant vibes discover the latest trends and refresh your wardrobe with pieces that make a statement
                   </p>
+                  <a href="#shop" class="cta-button">Discover Your Style</a>
+            </section>
+      </section>
+      <section class="container-cards">
+            <section class="cont-card-info">
+                  <img src="./assets/images/card-1.jpg" alt="">
+                  <div class="cont-card-info-content">
+                        <h2>Sustainable Fashion</h2>
+                        <p>oin us in making a difference! Our eco-friendly collection blends style and sustainability, 
+                              so you can look good while doing good for the planet.</p>
+                  </div>
+            </section>
+            <section class="cont-card-info">
+                  <img src="./assets/images/card-2.jpg" alt="">
+                  <div class="cont-card-info-content">
+                        <h2>Sustainable Fashion</h2>
+                        <p>oin us in making a difference! Our eco-friendly collection blends style and sustainability, 
+                              so you can look good while doing good for the planet.</p>
+                  </div>
+            </section>
+            <section class="cont-card-info">
+                  <img src="./assets/images/card-3.jpg" alt="">
+                  <div class="cont-card-info-content">
+                        <h2>Sustainable Fashion</h2>
+                        <p>oin us in making a difference! Our eco-friendly collection blends style and sustainability, 
+                              so you can look good while doing good for the planet.</p>
+                  </div>
             </section>
       </section>
       <section class="container-swiper-slider">

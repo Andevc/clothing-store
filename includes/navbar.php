@@ -1,22 +1,12 @@
-<nav class="navbar-x">
+<nav class="navbar">
     
     <a class="navbar-logo" href="index.php">
-        <!-- <img class="navbar-logo-img" src="./public/log-w.png" alt="CHRIK logotype" > -->
-        Chirk s.r.l
+        Neon Fashions
     </a>
 
 
     <ul class="navbar-categories">
 
-        <!-- MENS -->
-        <!-- <li class="categories__item">
-            <a class="categories__link" href="#">Mens</a>
-        </li> -->
-
-        <!-- WOMENS -->
-        <!-- <li class="categories__item">
-            <a class="categories__link" href="#">Womens</a>
-        </li> -->
         <li class="categories__item">
             <a class="" href="shop.php">Shop</a>
         </li>
@@ -25,9 +15,12 @@
             <a class="" href="shop.php">About Us</a>
         </li>
 
-        <li class="categories__item">
-            <a class="categories__link" href="about.php"> Local Stores </a>
+        <li>
+            <a href="login.php">Login</a>
+            /
+            <a href="regsiter.php">Register</a>
         </li>
+
 
         <!-- My Acount -->
             <!-- 

@@ -54,8 +54,8 @@
                                     <th>Keywords</th>
                                     <th>Stock</th>
                                     <th>Date</th>
-                                    <th>Delete</th>
                                     <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
 
@@ -76,15 +76,16 @@
                                         <td><?= htmlspecialchars($product->date); ?></td>
                                         
                                         <td>
-                                            <a href="index.php?delete_product=<?= $product->product_id; ?>">
-                                                <i class="fa fa-trash-o"> </i> Delete
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="index.php?edit_product=<?= $product->product_id; ?>">
+                                            <a href="index.php?product_edit=<?= $product->product_id; ?>">
                                                 <i class="fa fa-pencil"> </i> Edit
                                             </a>
                                         </td>
+                                        <td>
+                                            <a href="index.php?product_delete=<?= $product->product_id; ?>">
+                                                <i class="fa fa-trash-o"> </i> Delete
+                                            </a>
+                                        </td>
+                                        
                                     </tr>
                                 <?php endforeach;?>
                             </tbody>
