@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+.hero {
+    background: linear-gradient(to right, #6a11cb55, #00000055), url('../assets/images/bg-main.webp');
+    background-position: center;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    height: 650px;
+    padding: 60px 20px;
+}
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: scale(1.05);
+}
+.features {
+    padding: 50px 20px;
+}
+.features h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: #333;
+}
+.products {
+    padding: 50px 20px;
+    background-color: #fff;
+}
+.products h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: #333;
+}
+.benefits {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+}
+.benefits h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: #333;
+}
+.benefit {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
