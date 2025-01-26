@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../assets/fonts/RobotoRegular-3m4L.woff2') format('woff2');
+    font-style: normal;
+    font-weight: normal;
+}
+
+
+@font-face { 
+    font-family: 'maulie'; 
+    src: url('../assets/fonts/mauliescript-doqxd-webfont.woff2') format('woff2'), 
+         url('../assets/fonts/mauliescript-doqxd-webfont.woff') format('woff'); 
+    font-weight: normal; 
+    font-style: normal; 
+ 
+}
+
+@font-face { 
+    font-family: 'rolling'; 
+    src: url('../assets/fonts/rolling-yzm9v-webfont.woff2') format('woff2'), 
+         url('../assets/fonts/rolling-yzm9v-webfont.woff') format('woff'); 
+    font-weight: normal; 
+    font-style: normal; 
+ 
+}
+
+@font-face { 
+    font-family: 'bailies_scriptregular'; 
+    src: url('../assets/fonts/bailiesscript-3zl5z-webfont.woff2') format('woff2'), 
+         url('../assets/fonts/bailiesscript-3zl5z-webfont.woff') format('woff'); 
+    font-weight: normal; 
+    font-style: normal; 
+}
+
+
+:root{
+    --font-roboto: 'Roboto', sans-serif;
+    --font-bailies: 'bailies_scriptregular', sans-serif;
+    --font-rolling: 'rolling', sans-serif;
+    --font-maulie: 'maulie', sans-serif;
+}
