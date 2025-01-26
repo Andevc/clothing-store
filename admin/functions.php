@@ -22,18 +22,19 @@
         return $nombreProducto;
     }
 
+    
     function generateOptions($tableName, $value_id, $value_title){
         
 
-        $items = DB::talbe($tableName)->get();
+        $items = DB::table($tableName)->get();
 
         foreach($items as $item){
+        
             $value = htmlspecialchars($item->$value_id);
             $title = htmlspecialchars($item->$value_title);
 
-            echo "<option value='$value'>$title</option>";
-        }
-
+            echo "<option value='$value'> $title </option>";
         
-
+        }
+        
     }

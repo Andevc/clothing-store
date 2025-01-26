@@ -49,30 +49,12 @@
             </div>
           </div>
 
-<!-- 
-          <div class="form-group">
-            <label class="col-md-3 control-label"> Product Url </label>
-            <div class="col-md-6">
-              <input type="text" name="product_url" class="form-control" required>
-              <br>
-              <p style="font-size:15px; font-weight:bold;">
-                Product Url Example : navy-blue-t-shirt
-              </p>
-            </div>
-          </div> -->
-
-
           <div class="form-group">
             <label class="col-md-3 control-label"> Select A Manufacturer </label>
             <div class="col-md-6">
               <select class="form-control" name="manufacturer">
                 <option> Select A Manufacturer </option>
-                <?php foreach($manufacturers as $manufacturer): ?>
-                  <option value="<?= htmlspecialchars($manufacturer->manufacturer_id); ?>">
-                    <?= htmlspecialchars($manufacturer->manufacturer_title); ?>
-                  </option>
-                <?php endforeach ?>
-                
+                <?php generateOptions('manufacturers', 'manufacturer_id', 'manufacturer_title') ?>                
                 
               </select>
             </div>
@@ -84,14 +66,9 @@
             <div class="col-md-6">
               <select name="product_cat" class="form-control">
                 <option> Select a Product Category </option>
-                <?php foreach($product_categories as $categorie): ?>
-                  <option value="<?= htmlspecialchars($categorie->p_cat_id); ?>">
-                    <?= htmlspecialchars($categorie->p_cat_title); ?>
-                  </option>
-                <?php endforeach ?>
+                  <?php generateOptions('product_categories', 'p_cat_id', 'p_cat_title') ?>
               </select>
             </div>
-
           </div>
 
 
@@ -139,12 +116,6 @@
 
                 </li>
 
-                <li>
-
-                  <a data-toggle="tab" href="#video"> Sounds And Videos </a>
-
-                </li>
-
               </ul>
 
               <div class="tab-content">
@@ -163,18 +134,6 @@
                       </textarea>
                 </div>
 
-
-                <div id="video" class="tab-pane fade in">
-
-                  <br>
-
-                  <textarea name="product_video" class="form-control" rows="15">
-
-                      </textarea>
-
-                </div>
-
-
               </div>
 
             </div>
@@ -190,20 +149,6 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="col-md-3 control-label"> Product Image 2 </label>
-            <div class="col-md-6">
-              <input type="file" name="product_img2" class="form-control">
-            </div>
-
-          </div>
-
-          <div class="form-group">
-            <label class="col-md-3 control-label"> Product Image 3 </label>
-            <div class="col-md-6">
-              <input type="file" name="product_img3" class="form-control">
-            </div>
-          </div>
 
           
 
