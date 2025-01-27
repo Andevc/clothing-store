@@ -9,14 +9,12 @@ body {
 .hero-main {
     background: url('../assets/images/bg-main.webp') no-repeat center center/cover;
     color: #1c1c1c;
-    padding: 6em;
     
     
     min-height: 100dvh;
     display: flex;
     align-items: center;
     font-family: var(--font-roboto);
-    
     
 }
 .hero-content{
@@ -35,7 +33,7 @@ body {
     font-size: 1.2rem;
     margin-bottom: 30px;
 }
-.hero-content a {
+.hero-content button {
     margin-right: 15px;
 }
 .card{
@@ -135,6 +133,7 @@ body {
 .btn-nav{
     padding: 1em 2em;   
     border-radius: 2em;
+    
     font-size: 1em;
     font-weight: bold;
     text-decoration: none;
@@ -156,3 +155,5 @@ body {
     
     transform: scale(1.2);
 }
+
+

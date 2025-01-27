@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="styles/landing-style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="styles/swiper-style.css">
+
+    
 </head>
 <body>
 
@@ -32,6 +34,7 @@
         <div class="hero-content" data-aos="fade-left">
             <h1>Compra Facil con Chirk Fashion</h1>
             <p>Accede a las últimas tendencias y gestiona tus compras de forma rápida y eficiente con nuestra plataforma.</p>
+            
             <a href="register.php" class="btn-nav btn-register">Regístrate Ahora</a>
             <a href="login.php" class="btn-nav btn-login">Iniciar Sesión</a>
         </div>
