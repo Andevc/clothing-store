@@ -12,9 +12,9 @@
 
     };
 
-    if(isset($_GET['delete_product'])){
-        $delete_id = $_GET['delete_product'];
-        $run_delete = DB::table('products')->where('product_id', $delete_id)->delete();
+    if(isset($_GET['delete_rel'])){
+        $delete_id = $_GET['delete_rel'];
+        $run_delete = DB::table('bundle_product_relation')->where('rel_id', $delete_id)->delete();
 
         if($run_delete){
             echo "<script>alert('One Product Has been deleted')</script>";
@@ -23,5 +23,4 @@
         }
 
     }
-
 

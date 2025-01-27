@@ -1,153 +1,172 @@
 <?php
 
+use Illuminate\Database\Capsule\Manager as DB;
 
-if(!isset($_SESSION['admin_email'])){
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../database/db_connector.php';
 
-echo "<script>window.open('login.php','_self')</script>";
 
+if (!isset($_SESSION['admin_email'])) {
+
+    echo "<script>window.open('login.php','_self')</script>";
+    exit;
 }
 
-else {
+$items_table = DB::table('payments')->get();
 
 
 ?>
 
 
-<div class="row"><!-- 1 row Starts -->
+<div class="row">
 
-<div class="col-lg-12"><!-- col-lg-12 Starts -->
+    <div class="col-lg-12">
 
-<ol class="breadcrumb"><!-- breadcrumb Starts -->
+        <ol class="breadcrumb">
 
-<li class="active">
+            <li class="active">
 
-<i class="fa fa-dashboard"></i> Dashboard / View Payments
+                <i class="fa fa-dashboard"></i> Dashboard / View Payments
 
-</li>
+            </li>
 
-</ol><!-- breadcrumb Ends -->
+        </ol>
 
-</div><!-- col-lg-12 Ends -->
+    </div>
 
-</div><!-- 1 row Ends -->
+</div>
 
 
-<div class="row"><!-- 2 row Starts -->
+<div class="row">
 
-<div class="col-lg-12"><!-- col-lg-12 Starts -->
+    <div class="col-lg-12">
 
-<div class="panel panel-default"><!-- panel panel-default Starts -->
+        <div class="panel panel-default">
 
-<div class="panel-heading"><!-- panel-heading Starts -->
+            <div class="panel-heading">
 
-<h3 class="panel-title"><!-- panel-title Starts -->
+                <h3 class="panel-title">
 
-<i class="fa fa-money fa-fw"> </i> View Payments
+                    <i class="fa fa-money fa-fw"> </i> View Payments
 
-</h3><!-- panel-title Ends -->
+                </h3>
 
-</div><!-- panel-heading Ends -->
+            </div>
 
-<div class="panel-body"><!-- panel-body Starts -->
+            <div class="panel-body">
 
-<div class="table-responsive"><!-- table-responsive Starts -->
+                <div class="table-responsive">
 
-<table class="table table-hover table-bordered table-striped"><!-- table table-hover table-bordered table-striped Starts -->
+                    <table class="table table-hover table-bordered table-striped">
 
-<thead><!-- thead Starts -->
+                        <thead>
 
-<tr>
+                            <tr>
 
-<th>#</th>
-<th>Invoice No</th>
-<th>Amount Paid</th>
-<th>Payment Method</th>
-<th>Reference #</th>
-<th>Payment Code</th>
-<th>Payment Date</th>
-<th>Action</th>
+                                <th>#</th>
+                                <th>Invoice No</th>
+                                <th>Amount Paid</th>
+                                <th>Payment Method</th>
+                                <th>Reference #</th>
+                                <th>Payment Code</th>
+                                <th>Payment Date</th>
+                                <th>Action</th>
 
-</tr>
+                            </tr>
 
-</thead><!-- thead Ends -->
+                        </thead>
 
-<tbody><!-- tbody Starts -->
+                        <tbody>
 
-<?php
+                            <?php foreach($items_table as $index => $item): ?>
+                                    <tr>
+                                        <td><?= $index + 1;?></td>
+                                        <td><?= htmlspecialchars($item->invoice_no); ?></td>
+                                        <td><?= htmlspecialchars($item->amount); ?></td>
+                                        <td><?= htmlspecialchars($item->payment_mode); ?></td>
+                                        <td><?= htmlspecialchars($item->ref_no); ?></td>
+                                        <td><?= htmlspecialchars($item->code); ?></td>
+                                        <td><?= htmlspecialchars($item->payment_date); ?></td>
+                                        <td>
+                                            <a href="index.php?payment_delete=<?= $item->admin_id; ?>">
+                                                <i class="fa fa-trash-o"> </i> Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                            <?php endforeach ?>
 
-$i = 0;
+                            <?php
 
-$get_payments = "select * from payments";
+                            $i = 0;
 
-$run_payments = mysqli_query($con,$get_payments);
+                            $get_payments = "select * from payments";
 
-while($row_payments = mysqli_fetch_array($run_payments)){
+                            $run_payments = mysqli_query($con, $get_payments);
 
-$payment_id = $row_payments['payment_id'];
+                            while ($row_payments = mysqli_fetch_array($run_payments)) {
 
-$invoice_no = $row_payments['invoice_no'];
+                                $payment_id = $row_payments['payment_id'];
 
-$amount = $row_payments['amount'];
+                                $invoice_no = $row_payments['invoice_no'];
 
-$payment_mode = $row_payments['payment_mode'];
+                                $amount = $row_payments['amount'];
 
-$ref_no = $row_payments['ref_no'];
+                                $payment_mode = $row_payments['payment_mode'];
 
-$code = $row_payments['code'];
+                                $ref_no = $row_payments['ref_no'];
 
-$payment_date = $row_payments['payment_date'];
+                                $code = $row_payments['code'];
 
-$i++;
+                                $payment_date = $row_payments['payment_date'];
 
+                                $i++;
 
-?>
 
+                                ?>
 
-<tr>
 
-<td><?php echo $i; ?></td>
+                                <tr>
 
-<td bgcolor="yellow" ><?php echo $invoice_no; ?></td>
+                                    <td><?php echo $i; ?></td>
 
-<td>$<?php echo $amount; ?></td>
+                                    <td bgcolor="yellow"><?php echo $invoice_no; ?></td>
 
-<td><?php echo $payment_mode; ?></td>
+                                    <td>$<?php echo $amount; ?></td>
 
-<td><?php echo $ref_no; ?></td>
+                                    <td><?php echo $payment_mode; ?></td>
 
-<td><?php echo $code; ?></td>
+                                    <td><?php echo $ref_no; ?></td>
 
-<td><?php echo $payment_date; ?></td>
+                                    <td><?php echo $code; ?></td>
 
-<td>
+                                    <td><?php echo $payment_date; ?></td>
 
-<a href="index.php?payment_delete=<?php echo $payment_id; ?>" >
+                                    <td>
 
-<i class="fa fa-trash-o" ></i> Delete
+                                        <a href="index.php?payment_delete=<?php echo $payment_id; ?>">
 
-</a>
+                                            <i class="fa fa-trash-o"></i> Delete
 
-</td>
+                                        </a>
 
+                                    </td>
 
-</tr>
 
+                                </tr>
 
-<?php } ?>
 
-</tbody><!-- tbody Ends -->
+                            <?php } ?>
 
-</table><!-- table table-hover table-bordered table-striped Ends -->
+                        </tbody>
 
-</div><!-- table-responsive Ends -->
+                    </table>
 
-</div><!-- panel-body Ends -->
+                </div>
 
-</div><!-- panel panel-default Ends -->
+            </div>
 
-</div><!-- col-lg-12 Ends -->
+        </div>
 
-</div><!-- 2 row Ends -->
+    </div>
 
-
-<?php } ?>
+</div>

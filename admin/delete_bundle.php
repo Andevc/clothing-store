@@ -12,14 +12,14 @@
     }
 
 
-    if(isset($_GET['payment_delete'])){
+    if(isset($_GET['delete_bundle'])){
 
-        $delete_id = $_GET['payment_delete'];
-        $run_delete = DB::table('payments')->where('payment_id', $delete_id)->delete();
-        
+        $delete_id = $_GET['delete_bundle'];
+        $delete_pro = DB::table('products')->where('product_id', $delete_id)->delete();
+        $delete_rel = DB::table('bundle_product_relation')->where('bundle_id', $delete_id)->delete();
     
 
-        if($run_delete){       
+        if($run_rel){       
 
             echo "<script>alert('One Bundle Has been deleted')</script>";
 
@@ -27,4 +27,7 @@
 
         }
 
-    }  
+    }
+
+?>
+
