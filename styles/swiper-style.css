@@ -14,17 +14,15 @@
 
 
 .swiper { 
-
     width: 85vw; 
-    height: 400px; 
-    
-    
+    height: 500px; 
 } 
 
 .swiper-slide { 
     margin: 0;
     background-color: white;
-    width: 80%;
+    width: 90%;
+    height: 90%;
     display: flex; 
     align-items: center; 
     justify-content: center; 
@@ -32,4 +30,61 @@
     font-size: 22px; 
     font-weight: bold; 
     color: #191919; 
+}
+
+
+
+.swiper-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.swiper-card img {
+    width: 80%;
+    object-fit: contain;
+    border-radius: 2em;
+    height: 100%;
+}
+
+.swiper-card-info {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.swiper-card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.swiper-card-price {
+    font-size: 1.2rem;
+    color: #27ae60;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.swiper-card-manufacturer {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.swiper-card-desc {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
 }

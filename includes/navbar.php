@@ -19,15 +19,5 @@
             <a href="checkout.php" class="navbar__link">Login</a>
         </li>
 
-        <!-- Otros enlaces genéricos para la landing -->
-        <li class="navbar__item">
-            <a href="#about" class="navbar__link">About Us</a>
-        </li>
-        <li class="navbar__item">
-            <a href="#services" class="navbar__link">Services</a>
-        </li>
-        <li class="navbar__item">
-            <a href="#contact" class="navbar__link">Contact</a>
-        </li>
     </ul>
 </nav>

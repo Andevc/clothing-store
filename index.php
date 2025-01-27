@@ -1,146 +1,150 @@
-<?php
-session_start();
-use Illuminate\Database\Capsule\Manager as DB;
-require_once __DIR__ . '/../vendor/autoload.php';
-    require_once __DIR__ . '/../database/db_connector.php';
-require_once __DIR__ . '/includes/header.php';
-require_once __DIR__ . '/includes/navbar.php';
-
-// Consulta utilizando Eloquent
-$products = DB::table('products as p')
-    ->join('manufacturers as m', 'p.manufacturer_id', '=', 'm.manufacturer_id')
-    ->where('m.manufacturer_top', '=', 'yes')
-    ->get();
-
-
-
-
+<?php 
+    use Illuminate\Database\Capsule\Manager as DB;
+    require_once __DIR__ . '/vendor/autoload.php';
+    require_once __DIR__ . '/database/db_connector.php';
+    
+    
+    
+    $products = DB::table('products as p')
+        ->join('manufacturers as m', 'p.manufacturer_id', '=', 'm.manufacturer_id')
+        ->where('m.manufacturer_top', '=', 'yes')
+        ->get();
+    
+    
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Fashion - Bienvenido</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/fonts.css">
+    <link rel="stylesheet" href="styles/landing-style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="styles/swiper-style.css">
+</head>
+<body>
 
-<main>
-      <section class="container-main" >
-            <section class="main-content">
-                  <h1>
-                        Neon Fashions
-                  </h1>
-                  
-                  <p>
-                  Where bold style meets vibrant vibes discover the latest trends and refresh your wardrobe with pieces that make a statement
-                  </p>
-                  <a href="#shop" class="cta-button">Discover Your Style</a>
-            </section>
-      </section>
-      <section class="container-cards">
-            <section class="cont-card-info">
-                  <img src="./assets/images/card-1.jpg" alt="">
-                  <div class="cont-card-info-content">
-                        <h2>Sustainable Fashion</h2>
-                        <p>oin us in making a difference! Our eco-friendly collection blends style and sustainability, 
-                              so you can look good while doing good for the planet.</p>
-                  </div>
-            </section>
-            <section class="cont-card-info">
-                  <img src="./assets/images/card-2.jpg" alt="">
-                  <div class="cont-card-info-content">
-                        <h2>Sustainable Fashion</h2>
-                        <p>oin us in making a difference! Our eco-friendly collection blends style and sustainability, 
-                              so you can look good while doing good for the planet.</p>
-                  </div>
-            </section>
-            <section class="cont-card-info">
-                  <img src="./assets/images/card-3.jpg" alt="">
-                  <div class="cont-card-info-content">
-                        <h2>Sustainable Fashion</h2>
-                        <p>oin us in making a difference! Our eco-friendly collection blends style and sustainability, 
-                              so you can look good while doing good for the planet.</p>
-                  </div>
-            </section>
-      </section>
-      <section class="container-swiper-slider">
-            <!-- Swiper -->
+    <!-- Hero Section -->
+    <div class="hero-main" data-aos="fade-up">
+        <div class="hero-content" data-aos="fade-left">
+            <h1>Compra Facil con Chirk Fashion</h1>
+            <p>Accede a las últimas tendencias y gestiona tus compras de forma rápida y eficiente con nuestra plataforma.</p>
+            <a href="register.php" class="btn-nav btn-register">Regístrate Ahora</a>
+            <a href="login.php" class="btn-nav btn-login">Iniciar Sesión</a>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <div class="products container">
+        <h2 data-aos="fade-left">Productos Destacados</h2>
+        <div class="products-top">
             <div class="swiper mySwiper">
-
-                  <?php
-                        echo "<div class='swiper-wrapper'>";
-
-                        $query = 'SELECT * FROM `products` p JOIN `manufacturers` m ON p.manufacturer_id = m.manufacturer_id WHERE m.manufacturer_top="yes"';
-                        $res = $conn->query($query);
-                        
-                        if ($res->num_rows > 0){
-                              // Recorrer los resultados y mostrar cada producto en una card
-                              while ($row = $res->fetch_assoc()) {
-                                    echo "<div class='swiper-slide'>";
-
-
-                                    echo "<div class='card'>";
-                                          echo "<div class='card-image'>";
-                                          echo "<img src=" . $row['product_img1'] . " alt='Imagen del producto' class='card-img'>";  // Agregar una imagen para el producto
-                                          echo "</div>";  // Fin de card-body
-                                    echo "<div class='card-content'>";
-                                          echo "<div class='card-info'>";
-                                                echo '<p class="product-category">'.$row['product_user_type'].'</p>';
-                                                echo '<h2 class="product-name">'.$row['product_title'].'</h2>';
-                                                echo '<p class="product-description">'.$row['product_desc'].'</p>';
-                                          echo "</div>";  // Fin de card-body
-                                          echo "<div class='card-footer'>";
-                                                echo '<span class="price">'.$row['product_price'].'</span>';
-                                                echo '<div class="buttons">';
-                                                echo '<a href="#" class="view-details">View Details</a>';
-                                                echo '<button class="add-to-cart">Add to Cart</button>';
-                                                echo '</div>';
-                                          echo "</div>";  // Fin de card-body
-                                    echo "</div>";  // Fin de card-body
-                                    
-                                    
-                                    echo "</div>";  // Fin de card-body
-                                    
-
-
-                                    echo "</div>";  // Fin de card
-                              }
-                        } 
-                        else { echo "No se encontraron productos en el top."; }
-                        // Cerrar la conexión
-                        $conn->close();
-
-                        echo "</div>";  // Fin de card-container
-                  ?>
-
-                  
+                <div class="swiper-wrapper">
+                <?php foreach($products as $product): ?>
+                    <div class="swiper-slide">
+                        <div class="swiper-card">
+                            <img src="<?= $product->product_img1; ?>" alt="<?= htmlspecialchars($product->product_title); ?>" class="swiper-card-img">
+                            <div class="swiper-card-info">
+                                <h3 class="swiper-card-title"><?= htmlspecialchars($product->product_title); ?></h3>
+                                <p class="swiper-card-price">$<?= htmlspecialchars($product->product_price); ?></p>
+                                <p class="swiper-card-manufacturer">Fabricante: <?= htmlspecialchars($product->manufacturer_title); ?></p>
+                                <p class="swiper-card-desc"><?= htmlspecialchars($product->product_desc); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+                </div>
             </div>
+            
+        </div>
+        
 
-            <!-- Swiper JS -->
-            <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-            <!-- Initialize Swiper -->
-            <script>
-                  var swiper = new Swiper(".mySwiper", {
-                        effect: "coverflow",
-                        grabCursor: true,
-                        centeredSlides: true,
-                        slidesPerView: "3",
-                        loop: true,
-                        autoplay: {
-                              delay:5000,
-                        },
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> 
+        <!-- Initialize Swiper --> 
+        <script> 
+            const swiper = new Swiper(".mySwiper", { 
+                effect: "coverflow", 
+                grabCursor: true, 
+                centeredSlides: true,
+                slidesPerView: 1.5,
+                loop: true,
+                autoplay:{
+                    delay:5000,
+                },
+                coverflowEffect: {
+                    rotate: 0,
+                    stretch: 50,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
                         
-                        coverflowEffect: {
-                              rotate: 45,
-                              stretch: 0,
-                              depth: 100,
-                              modifier: 1,
-                              slideShadows: true,
-                              
-                        },
-                        
-                  });
-            </script>
-      </section>
-      <section>
-            klamkdm
-      </section>
-</main>
-<?php include 'includes/footer.php' ?>
+                },
+            }); 
+        </script>
 
+    </div>
+    <br><br><br>
+    <!-- Features Section -->
+    <div class="features ">
+        <h2 data-aos="fade-right">Por qué elegir Chirk Fashion</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card p-4 text-center" data-aos="zoom-in">
+                    <img src="assets/images/card-1.jpg"  alt="Facilidad de Uso">
+                    <h5 class="card-title">Facilidad de Uso</h5>
+                    <p class="card-text">Nuestra plataforma es intuitiva y está diseñada para que compres sin complicaciones.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-4 text-center" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="assets/images/card-2.jpg"  alt="Variedad de Productos">
+                    <h5 class="card-title">Variedad de Productos</h5>
+                    <p class="card-text">Encuentra una amplia gama de productos que se adaptan a tus necesidades.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card p-4 text-center" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="assets/images/card-3.jpg"  alt="Soporte Confiable">
+                    <h5 class="card-title">Soporte Confiable</h5>
+                    <p class="card-text">Contamos con un equipo dedicado para ayudarte en cualquier momento.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- Benefits Section -->
+    <div class="benefits">
+        <h2 data-aos="fade-up">Beneficios Clave</h2>
+        <div class="row ">
+            <div class="col-md-4 benefit" data-aos="fade-right">
+                <h5>Comodidad</h5>
+                <p>Realiza tus compras desde cualquier lugar y en cualquier momento.</p>
+            </div>
+            <div class="col-md-4 benefit" data-aos="fade-up">
+                <h5>Seguridad</h5>
+                <p>Tus datos están protegidos con nosotros.</p>
+            </div>
+            <div class="col-md-4 benefit" data-aos="fade-left">
+                <h5>Atención Personalizada</h5>
+                <p>Ofrecemos soporte rápido y personalizado para todos nuestros clientes.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Neon Fashion Todos los derechos reservados. | Diseñado para compradores modernos.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
-
 </html>

@@ -10,7 +10,7 @@
         ->where('m.manufacturer_top', '=', 'yes')
         ->get();
     
-
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,8 +32,8 @@
         <div class="hero-content" data-aos="fade-left">
             <h1>Compra Facil con Chirk Fashion</h1>
             <p>Accede a las últimas tendencias y gestiona tus compras de forma rápida y eficiente con nuestra plataforma.</p>
-            <a href="register.php" class="btn btn-light btn-lg">Regístrate Ahora</a>
-            <a href="login.php" class="btn btn-outline-light btn-lg">Iniciar Sesión</a>
+            <a href="register.php" class="btn-nav btn-register">Regístrate Ahora</a>
+            <a href="login.php" class="btn-nav btn-login">Iniciar Sesión</a>
         </div>
     </div>
 
@@ -45,20 +45,27 @@
                 <div class="swiper-wrapper">
                 <?php foreach($products as $product): ?>
                     <div class="swiper-slide">
-                        <p><?= htmlspecialchars($product->product_title); ?></p>
-                        <p><?= htmlspecialchars($product->product_price); ?></p>
+                        <div class="swiper-card">
+                            <img src="<?= $product->product_img1; ?>" alt="<?= htmlspecialchars($product->product_title); ?>" class="swiper-card-img">
+                            <div class="swiper-card-info">
+                                <h3 class="swiper-card-title"><?= htmlspecialchars($product->product_title); ?></h3>
+                                <p class="swiper-card-price">$<?= htmlspecialchars($product->product_price); ?></p>
+                                <p class="swiper-card-manufacturer">Fabricante: <?= htmlspecialchars($product->manufacturer_title); ?></p>
+                                <p class="swiper-card-desc"><?= htmlspecialchars($product->product_desc); ?></p>
+                            </div>
+                        </div>
                     </div>
                 <?php endforeach ?>
                 </div>
             </div>
+            
         </div>
         
 
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> 
- 
         <!-- Initialize Swiper --> 
         <script> 
-            var swiper = new Swiper(".mySwiper", { 
+            const swiper = new Swiper(".mySwiper", { 
                 effect: "coverflow", 
                 grabCursor: true, 
                 centeredSlides: true,
@@ -68,10 +75,10 @@
                     delay:5000,
                 },
                 coverflowEffect: {
-                    rotate: 2,
-                    stretch: 2,
-                    depth: 75,
-                    modifier: 2.5,
+                    rotate: 0,
+                    stretch: 80,
+                    depth: 200,
+                    modifier: 1,
                     slideShadows: true,
                         
                 },
@@ -79,9 +86,9 @@
         </script>
 
     </div>
-
+    <br><br><br>
     <!-- Features Section -->
-    <div class="features">
+    <div class="features ">
         <h2 data-aos="fade-right">Por qué elegir Chirk Fashion</h2>
         <div class="row">
             <div class="col-md-4 mb-4">
@@ -111,9 +118,9 @@
     
 
     <!-- Benefits Section -->
-    <div class="benefits container">
+    <div class="benefits">
         <h2 data-aos="fade-up">Beneficios Clave</h2>
-        <div class="row">
+        <div class="row ">
             <div class="col-md-4 benefit" data-aos="fade-right">
                 <h5>Comodidad</h5>
                 <p>Realiza tus compras desde cualquier lugar y en cualquier momento.</p>

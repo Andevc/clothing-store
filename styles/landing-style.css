@@ -54,7 +54,8 @@ body {
     transform: scale(1.05);
 }
 .features {
-    padding: 3em 2em;
+    margin-top: 10em;
+    padding: 5em 2em;
     width: 90%;
     margin: 0 auto;
     
@@ -103,15 +104,16 @@ body {
     
 }
 
-.benefits-content, .features-content, .products-content{
+.features-content, .products-content{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2em;
 }
-.benefits-content > .card{
-    padding: 1em;
+.benefits > .benefit{
+    padding: 1.5em;
     text-align: center;
     background-color: #ffffff;
+    border-radius: 2em;
     
 }
 .benefits h2 {
@@ -127,4 +129,30 @@ body {
     color: white;
     padding: 20px;
     text-align: center;
+}
+
+
+.btn-nav{
+    padding: 1em 2em;   
+    border-radius: 2em;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 0 20px #191919;
+    transition: .5s ease;
+}
+
+.btn-register{
+    background: #191919;
+    color: white;
+}
+
+.btn-login{
+    background: #d1ccc6;
+    color: black;
+}
+
+.btn-login:hover, .btn-register:hover{
+    
+    transform: scale(1.2);
 }
