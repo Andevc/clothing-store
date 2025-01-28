@@ -102,7 +102,7 @@ if (!isset($_SESSION['admin_email'])) {
 
                 <li><!-- Bundles Li Starts --->
 
-                    <a href="#" data-toggle="collapse" data-target="#bundles">
+                    <!-- <a href="#" data-toggle="collapse" data-target="#bundles">
 
                         <i class="fa fa-fw fa-edit"></i> Bundles
 
@@ -120,7 +120,7 @@ if (!isset($_SESSION['admin_email'])) {
                             <a href="index.php?view_bundles"> View Bundles </a>
                         </li>
 
-                    </ul>
+                    </ul> -->
 
                 </li><!-- Bundles Li Ends --->
 

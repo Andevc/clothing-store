@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     use Illuminate\Database\Capsule\Manager as DB;
     require_once __DIR__ . '/vendor/autoload.php';
     require_once __DIR__ . '/database/db_connector.php';
@@ -29,6 +29,8 @@
     }
 
     $products = $query->get();
+
+    /* include_once 'includes/navbar.php'; */
 
 ?>
 
@@ -65,8 +67,8 @@
                   <h4>Gender</h4>
                   <select name="product_user_type">
                       <option value="">All</option>
-                      <option value="Male" <?= $filters['product_user_type'] == 'Male' ? 'selected' : '' ?>>Male</option>
-                      <option value="Female" <?= $filters['product_user_type'] == 'Female' ? 'selected' : '' ?>>Female</option>
+                      <option value="Male" <?= $filters['product_user_type'] == 'M' ? 'selected' : '' ?>>Male</option>
+                      <option value="Female" <?= $filters['product_user_type'] == 'F' ? 'selected' : '' ?>>Female</option>
                   </select>
               </div>
   

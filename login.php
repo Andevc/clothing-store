@@ -4,8 +4,32 @@ use Illuminate\Database\Capsule\Manager as DB;
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/database/db_connector.php';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
+    $customerEmail = $_POST['c_email'];
+    $customerPass = $_POST['c_pass'];
 
-// Aquí debería ir tu lógica de autenticación
+    // Verifica si el correo existe
+    $customer = DB::table('customers')->where('customer_email', $customerEmail)->first();
+
+    if (!$customer) {
+        echo "<script>alert('Email or password is incorrect');</script>";
+        exit();
+    }
+
+    
+    if ($customer->customer_pass !== $customerPass) {
+        echo "<script>alert('Email or password is incorrect');</script>";
+        exit();
+    }
+
+    $customerId = $customer->customer_id;
+    // Inicia sesión del cliente
+    $_SESSION['user_email'] = $customerEmail;
+
+    echo "<script>alert('You are Logged In');</script>";
+    echo "<script>window.open('shop.php','_self')</script>";
+}
+/* // Aquí debería ir tu lógica de autenticación
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Conexión a la base de datos y verificación del usuario
     $email = $_POST['email'];
@@ -27,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Si el login falla, mostrar un mensaje de error
         echo "Error: Email o contraseña incorrectos.";
     }
-}
+} */
 ?>
 
 
@@ -48,10 +72,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <form action="login.php" method="POST">
             <h2>Iniciar Sesión</h2>
             <label for="email">Correo Electrónico:</label>
-            <input type="email" name="customer_email" id="email" required><br>
+            <input type="email" name="c_email"  required><br>
 
             <label for="password">Contraseña:</label>
-            <input type="password" name="customer_pass" id="password" required><br>
+            <input type="password" name="c_pass"  required><br>
 
             <button type="submit" name="submit">Iniciar Sesión</button>
         </form>
