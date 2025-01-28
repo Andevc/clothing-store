@@ -14,20 +14,12 @@
 
     if(isset($_GET['delete_p_cat'])){
         $delete_id = $_GET['delete_p_cat'];
-        $run_delete = DB::table('products')->where('p_cat_id', $delete_id)->delete();
+        $run_delete = DB::table('product_categories')->where('p_cat_id', $delete_id)->delete();
 
         if($run_delete){
             echo "<script>alert('One Product Has been deleted')</script>";
-            echo "<script>window.open('index.php?view_products','_self')</script>";
+            echo "<script>window.open('index.php?view_p_cats','_self')</script>";
 
         }
 
     }
-
-
-
-
-
-
-
-

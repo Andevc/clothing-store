@@ -1,20 +1,25 @@
 <?php
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/database/db_connector.php';
 
+use Illuminate\Database\Capsule\Manager as DB;
+
+session_start();
 
 if (!isset($_SESSION['admin_email'])) {
-
     echo "<script>window.open('login.php','_self')</script>";
-} else {
+    exit;
+} 
 
 
 ?>
 
 
-    <div class="row"><!-- 1 row Starts -->
+    <div class="row">
 
-        <div class="col-lg-12"><!-- col-lg-12 Starts -->
+        <div class="col-lg-12">
 
-            <ol class="breadcrumb"><!-- breadcrumb Starts -->
+            <ol class="breadcrumb">
 
                 <li class="active">
 
@@ -22,34 +27,34 @@ if (!isset($_SESSION['admin_email'])) {
 
                 </li>
 
-            </ol><!-- breadcrumb Ends -->
+            </ol>
 
-        </div><!-- col-lg-12 Ends -->
+        </div>
 
-    </div><!-- 1 row Ends -->
+    </div>
 
 
-    <div class="row"><!-- 2 row Starts -->
+    <div class="row">
 
-        <div class="col-lg-12"><!-- col-lg-12 Starts -->
+        <div class="col-lg-12">
 
-            <div class="panel panel-default"><!-- panel panel-default Starts -->
+            <div class="panel panel-default">
 
-                <div class="panel-heading"><!-- panel-heading Starts -->
+                <div class="panel-heading">
 
-                    <h3 class="panel-title"><!-- panel-title Starts -->
+                    <h3 class="panel-title">
 
                         <i class="fa fa-money fa-fw"> </i> Insert Manufacturer
 
-                    </h3><!-- panel-title Ends -->
+                    </h3>
 
-                </div><!-- panel-heading Ends -->
+                </div>
 
-                <div class="panel-body"><!-- panel-body Starts -->
+                <div class="panel-body">
 
-                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data"><!-- form-horizontal Starts -->
+                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
 
-                        <div class="form-group"><!-- form-group Starts -->
+                        <div class="form-group">
 
                             <label class="col-md-3 control-label"> Manufacturer Name </label>
 
@@ -59,9 +64,9 @@ if (!isset($_SESSION['admin_email'])) {
 
                             </div>
 
-                        </div><!-- form-group Ends -->
+                        </div>
 
-                        <div class="form-group"><!-- form-group Starts -->
+                        <div class="form-group">
 
                             <label class="col-md-3 control-label"> Show as Top Manufacturers </label>
 
@@ -77,9 +82,9 @@ if (!isset($_SESSION['admin_email'])) {
 
                             </div>
 
-                        </div><!-- form-group Ends -->
+                        </div>
 
-                        <div class="form-group"><!-- form-group Starts -->
+                        <div class="form-group">
 
                             <label class="col-md-3 control-label"> Select Manufacturer Image </label>
 
@@ -89,9 +94,9 @@ if (!isset($_SESSION['admin_email'])) {
 
                             </div>
 
-                        </div><!-- form-group Ends -->
+                        </div>
 
-                        <div class="form-group"><!-- form-group Starts -->
+                        <div class="form-group">
 
                             <label class="col-md-3 control-label"> </label>
 
@@ -101,44 +106,44 @@ if (!isset($_SESSION['admin_email'])) {
 
                             </div>
 
-                        </div><!-- form-group Ends -->
+                        </div>
 
-                    </form><!-- form-horizontal Ends -->
+                    </form>
 
-                </div><!-- panel-body Ends -->
+                </div>
 
-            </div><!-- panel panel-default Ends -->
+            </div>
 
-        </div><!-- col-lg-12 Ends -->
+        </div>
 
-    </div><!-- 2 row Ends -->
+    </div>
 
     <?php
 
-    if (isset($_POST['submit'])) {
 
-        $manufacturer_name = $_POST['manufacturer_name'];
 
-        $manufacturer_top = $_POST['manufacturer_top'];
+if (isset($_POST['submit'])) {
 
-        $manufacturer_image = $_FILES['manufacturer_image']['name'];
+    // Obtener datos del formulario
+    $manufacturer_name = $_POST['manufacturer_name'];
+    $manufacturer_top = $_POST['manufacturer_top'];
+    
+    $product_file = $_FILES['product_img1']['tmp_name'];
+    $product_image_url = get_url_from_cloudinary($product_file, $product_title);
 
-        $tmp_name = $_FILES['manufacturer_image']['tmp_name'];
 
-        move_uploaded_file($tmp_name, "other_images/$manufacturer_image");
 
-        $insert_manufacturer = "insert into manufacturers (manufacturer_title,manufacturer_top,manufacturer_image) values ('$manufacturer_name','$manufacturer_top','$manufacturer_image')";
+    // Insertar el nuevo fabricante en la base de datos
+    
+    DB::table('manufacturers')->insert([
+        'manufacturer_title' => $manufacturer_name,
+        'manufacturer_top' => $manufacturer_top,
+        'manufacturer_image' => $manufacturer_image,
+    ]);
 
-        $run_manufacturer = mysqli_query($con, $insert_manufacturer);
+    echo "<script>alert('New Manufacturer Has Been Inserted')</script>";
+    echo "<script>window.open('index.php?view_manufacturers','_self')</script>";
+    
+}
 
-        if ($run_manufacturer) {
-
-            echo "<script>alert('New Manufacturer Has Been Inserted')</script>";
-
-            echo "<script>window.open('index.php?view_manufacturers','_self')</script>";
-        }
-    }
-
-    ?>
-
-<?php } ?>
+?>

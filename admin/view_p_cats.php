@@ -1,138 +1,108 @@
 <?php
 
-if(!isset($_SESSION['admin_email'])){
+use Illuminate\Database\Capsule\Manager as DB;
 
-echo "<script>window.open('login.php','_self')</script>";
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../database/db_connector.php';
 
+
+if (!isset($_SESSION['admin_email'])) {
+
+    echo "<script>window.open('login.php','_self')</script>";
+    exit;
 }
 
-else {
+$items_table = DB::table('product_categories')->get();
 
 ?>
+<div class="row">
 
+    <div class="col-lg-12">
 
-<div class="row"><!-- 1 row Starts -->
+        <ol class="breadcrumb">
 
-<div class="col-lg-12"><!-- col-lg-12 Starts -->
+            <li class="active">
 
-<ol class="breadcrumb"><!-- breadcrumb Starts -->
+                <i class="fa fa-dashboard"></i> Dashboard / View Products Categories
 
-<li class="active">
+            </li>
 
-<i class="fa fa-dashboard"></i> Dashboard / View Products Categories
+        </ol>
 
-</li>
+    </div>
 
-</ol><!-- breadcrumb Ends -->
+</div>
 
-</div><!-- col-lg-12 Ends -->
 
-</div><!-- 1 row Ends -->
+<div class="row">
 
+    <div class="col-lg-12">
 
-<div class="row"><!-- 2 row Starts -->
+        <div class="panel panel-default">
 
-<div class="col-lg-12"><!-- col-lg-12 Starts -->
+            <div class="panel-heading">
 
-<div class="panel panel-default"><!-- panel panel-default Starts -->
+                <h3 class="panel-title">
 
-<div class="panel-heading"><!-- panel-heading Starts -->
+                    <i class="fa fa-money fa-fw"> </i> View Products Categories
 
-<h3 class="panel-title"><!-- panel-title Starts -->
+                </h3>
 
-<i class="fa fa-money fa-fw"> </i> View Products Categories
+            </div>
 
-</h3><!-- panel-title Ends -->
+            <div class="panel-body">
 
-</div><!-- panel-heading Ends -->
+                <div class="table-responsive">
 
-<div class="panel-body"><!-- panel-body Starts -->
+                    <table class="table table-bordered table-hover table-striped">
+                        
 
-<div class="table-responsive"><!-- table-responsive Starts -->
+                        <thead>
 
-<table class="table table-bordered table-hover table-striped"><!-- table table-bordered table-hover table-striped Starts -->
+                            <tr>
 
-<thead><!-- thead Starts -->
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Delete</th>
+                                <th>Edit</th>
 
-<tr>
 
-<th>#</th>
-<th>Name</th>
-<th>Delete</th>
-<th>Edit</th>
+                            </tr>
 
+                        </thead>
 
-</tr>
+                        <tbody>
+                        <?php foreach($items_table as $index => $item): ?>
+                            <tr>
 
-</thead><!-- thead Ends -->
+                                <td><?= $index + 1;?></td>
+                                
+                                <td><?= htmlspecialchars($item->p_cat_title); ?></td>
+                                
+                                <td>
+                                    <a href="index.php?delete_p_cat=<?= $item->p_cat_id; ?>">
+                                        <i class="fa fa-trash-o"> </i> Delete
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="index.php?edit_p_cat=<?= $item->p_cat_id; ?>">
+                                        <i class="fa fa-pencil"></i> Edit
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
 
-<tbody><!-- tbody Starts -->
 
-<?php
+                        </tbody>
 
-$i=0;
+                    </table>
 
-$get_p_cats = "select * from product_categories";
+                </div>
 
-$run_p_cats = mysqli_query($con,$get_p_cats);
+            </div>
 
-while($row_p_cats = mysqli_fetch_array($run_p_cats)){
+        </div>
 
-$p_cat_id = $row_p_cats['p_cat_id'];
+    </div>
 
-$p_cat_title = $row_p_cats['p_cat_title'];
-
-
-$i++;
-
-?>
-
-<tr>
-
-<td> <?php echo $i; ?> </td>
-
-<td> <?php echo $p_cat_title; ?> </td>
-
-
-<td> 
-
-<a href="index.php?delete_p_cat=<?php echo $p_cat_id; ?>">
-
-<i class="fa fa-trash-o"></i> Delete
-
-</a>
-
-</td>
-
-<td> 
-
-<a href="index.php?edit_p_cat=<?php echo $p_cat_id; ?>">
-
-<i class="fa fa-pencil"></i> Edit
-
-</a>
-
-</td>
-
-
-</tr>
-
-<?php } ?>
-
-</tbody><!-- tbody Ends -->
-
-</table><!-- table table-bordered table-hover table-striped Ends -->
-
-</div><!-- table-responsive Ends -->
-
-</div><!-- panel-body Ends -->
-
-</div><!-- panel panel-default Ends -->
-
-</div><!-- col-lg-12 Ends -->
-
-</div><!-- 2 row Ends -->
-
-
-
-<?php } ?>
+</div>

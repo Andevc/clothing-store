@@ -1,20 +1,30 @@
 <?php
 
+use Illuminate\Database\Capsule\Manager as DB;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../database/db_connector.php';
+
 
 if (!isset($_SESSION['admin_email'])) {
 
     echo "<script>window.open('login.php','_self')</script>";
     exit;
-} else {
+}
 
+$items_table = DB::table('coupons as c')
+    ->join('products as p','c.product_id', '=', 'p.product_id' )
+    ->get();
+
+    
 
 ?>
 
-    <div class="row"><!-- 1 row Starts -->
+    <div class="row">
 
-        <div class="col-lg-12"><!-- col-lg-12 Starts -->
+        <div class="col-lg-12">
 
-            <ol class="breadcrumb"><!-- breadcrumb Starts -->
+            <ol class="breadcrumb">
 
                 <li class="active">
 
@@ -22,35 +32,35 @@ if (!isset($_SESSION['admin_email'])) {
 
                 </li>
 
-            </ol><!-- breadcrumb Ends -->
+            </ol>
 
-        </div><!-- col-lg-12 Ends -->
+        </div>
 
-    </div><!-- 1 row Ends -->
+    </div>
 
-    <div class="row"><!-- 2 row Starts -->
+    <div class="row">
 
-        <div class="col-lg-12"><!-- col-lg-12 Starts -->
+        <div class="col-lg-12">
 
-            <div class="panel panel-default"><!-- panel panel-default Starts -->
+            <div class="panel panel-default">
 
-                <div class="panel-heading"><!-- panel-heading Starts -->
+                <div class="panel-heading">
 
-                    <h3 class="panel-title"><!-- panel-title Starts -->
+                    <h3 class="panel-title">
 
                         <i class="fa fa-money fa-fw"></i> View Coupons
 
-                    </h3><!-- panel-title Ends -->
+                    </h3>
 
-                </div><!-- panel-heading Ends -->
+                </div>
 
-                <div class="panel-body"><!-- panel-body Starts -->
+                <div class="panel-body">
 
-                    <div class="table-responsive"><!-- table-responsive Starts -->
+                    <div class="table-responsive">
 
-                        <table class="table table-bordered table-hover table-striped"><!-- table table-bordered table-hover table-striped Starts -->
+                        <table class="table table-bordered table-hover table-striped">
 
-                            <thead><!-- thead Starts -->
+                            <thead>
 
                                 <tr>
 
@@ -66,10 +76,33 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 </tr>
 
-                            </thead><!-- thead Ends -->
+                            </thead>
 
-                            <tbody><!-- tbody Starts -->
+                            <tbody>
+                            <?php foreach($items_table as $index => $item): ?>
+                                <tr>
 
+                                    <td><?= $index + 1;?></td>
+                                    
+                                    <td><?= htmlspecialchars($item->coupon_title); ?></td>
+                                    <td><?= htmlspecialchars($item->product_title); ?></td>
+                                    <td><?= htmlspecialchars($item->coupon_price); ?></td>
+                                    <td><?= htmlspecialchars($item->coupon_code); ?></td>
+                                    <td><?= htmlspecialchars($item->coupon_limit); ?></td>
+                                    <td><?= htmlspecialchars($item->coupon_used); ?></td>
+                                    
+                                    <td>
+                                        <a href="index.php?delete_coupon=<?= $item->coupon_id; ?>">
+                                            <i class="fa fa-trash-o"> </i> Delete
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="index.php?edit_coupon=<?= $item->coupon_id; ?>">
+                                            <i class="fa fa-pencil"></i> Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
                                 <?php
 
                                 $i = 0;
@@ -147,18 +180,17 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 <?php } ?>
 
-                            </tbody><!-- tbody Ends -->
+                            </tbody>
 
-                        </table><!-- table table-bordered table-hover table-striped Ends -->
+                        </table>
 
-                    </div><!-- table-responsive Ends -->
+                    </div>
 
-                </div><!-- panel-body Ends -->
+                </div>
 
-            </div><!-- panel panel-default Ends -->
+            </div>
 
-        </div><!-- col-lg-12 Ends -->
+        </div>
 
-    </div><!-- 2 row Ends -->
+    </div>
 
-<?php } ?>

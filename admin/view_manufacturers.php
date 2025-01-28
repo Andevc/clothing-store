@@ -1,19 +1,28 @@
 <?php
 
+    use Illuminate\Database\Capsule\Manager as DB;
+
+    require_once __DIR__ . '/../vendor/autoload.php';
+    require_once __DIR__ . '/../database/db_connector.php';
 
 
-if (!isset($_SESSION['admin_email'])) {
+    if (!isset($_SESSION['admin_email'])) {
 
-    echo "<script>window.open('login.php','_self')</script>";
-} else {
+        echo "<script>window.open('login.php','_self')</script>";
+        exit;
+    }
+
+    $items_table = DB::table('manufacturers')->get();
+
+    
 
 ?>
 
-    <div class="row"><!-- 1 row Starts -->
+    <div class="row">
 
-        <div class="col-lg-12"><!-- col-lg-12 Starts -->
+        <div class="col-lg-12">
 
-            <ol class="breadcrumb"><!-- breadcrumb Starts -->
+            <ol class="breadcrumb">
 
                 <li class="active">
 
@@ -21,19 +30,19 @@ if (!isset($_SESSION['admin_email'])) {
 
                 </li>
 
-            </ol><!-- breadcrumb Ends -->
+            </ol>
 
-        </div><!-- col-lg-12 Ends -->
+        </div>
 
-    </div><!-- 1 row Ends -->
+    </div>
 
-    <div class="row"><!-- 2 row Starts -->
+    <div class="row">
 
-        <div class="col-lg-12"><!-- col-lg-12 Starts -->
+        <div class="col-lg-12">
 
-            <div class="panel panel-default"><!-- panel panel-default Starts -->
+            <div class="panel panel-default">
 
-                <div class="panel-heading"><!-- panel-heading Starts -->
+                <div class="panel-heading">
 
                     <h3 class="panel-title">
 
@@ -41,15 +50,15 @@ if (!isset($_SESSION['admin_email'])) {
 
                     </h3>
 
-                </div><!-- panel-heading Ends -->
+                </div>
 
-                <div class="panel-body"><!-- panel-body Starts -->
+                <div class="panel-body">
 
-                    <div class="table-responsive"><!-- table-responsive Starts --->
+                    <div class="table-responsive">
 
-                        <table class="table table-bordered table-hover table-striped"><!-- table table-bordered table-hover table-striped Starts -->
+                        <table class="table table-bordered table-hover table-striped">
 
-                            <thead><!-- thead Starts -->
+                            <thead>
 
                                 <tr>
 
@@ -60,70 +69,40 @@ if (!isset($_SESSION['admin_email'])) {
 
                                 </tr>
 
-                            </thead><!-- thead Ends -->
+                            </thead>
 
-                            <tbody><!-- tbody Starts -->
+                            <tbody>
+                            <?php foreach($items_table as $index => $item): ?>
+                                <tr>
 
-                                <?php
+                                    <td><?= $index + 1;?></td>
+                                    
+                                    <td><?= htmlspecialchars($item->manufacturer_title); ?></td>
+                                    
+                                    <td>
+                                        <a href="index.php?delete_manufacturer=<?= $item->manufacturer_id; ?>">
+                                            <i class="fa fa-trash-o"> </i> Delete
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="index.php?edit_manufacturer=<?= $item->manufacturer_id; ?>">
+                                            <i class="fa fa-pencil"></i> Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
 
-                                $i = 0;
+                            </tbody>
 
-                                $get_manufacturers = "select * from manufacturers";
+                        </table>
 
-                                $run_manufacturers = mysqli_query($con, $get_manufacturers);
+                    </div>
 
-                                while ($row_manufacturers = mysqli_fetch_array($run_manufacturers)) {
+                </div>
 
-                                    $manufacturer_id = $row_manufacturers['manufacturer_id'];
+            </div>
 
-                                    $manufacturer_title = $row_manufacturers['manufacturer_title'];
+        </div>
 
-                                    $i++;
+    </div>
 
-                                ?>
-
-                                    <tr>
-
-                                        <td><?php echo $i; ?></td>
-
-                                        <td><?php echo $manufacturer_title; ?></td>
-
-                                        <td>
-
-                                            <a href="index.php?delete_manufacturer=<?php echo $manufacturer_id; ?>">
-
-                                                <i class="fa fa-trash-o"></i> Delete
-
-                                            </a>
-
-                                        </td>
-
-                                        <td>
-
-                                            <a href="index.php?edit_manufacturer=<?php echo $manufacturer_id; ?>">
-
-                                                <i class="fa fa-pencil"></i> Edit
-
-                                            </a>
-
-                                        </td>
-
-                                    </tr>
-
-                                <?php } ?>
-
-                            </tbody><!-- tbody Ends -->
-
-                        </table><!-- table table-bordered table-hover table-striped Ends -->
-
-                    </div><!-- table-responsive Ends --->
-
-                </div><!-- panel-body Ends -->
-
-            </div><!-- panel panel-default Ends -->
-
-        </div><!-- col-lg-12 Ends -->
-
-    </div><!-- 2 row Ends -->
-
-<?php } ?>

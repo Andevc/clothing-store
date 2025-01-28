@@ -1,154 +1,110 @@
 <?php
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/database/db_connector.php';
 
-if(!isset($_SESSION['admin_email'])){
+use Illuminate\Database\Capsule\Manager as DB;
 
-echo "<script>window.open('login.php','_self')</script>";
+if (!isset($_SESSION['admin_email'])) {
 
-}
+    echo "<script>window.open('login.php','_self')</script>";
 
-else {
-
-
+} else {
 ?>
 
-<div class="row"><!-- 1 row Starts -->
+    <div class="row">
 
-<div class="col-lg-12"><!-- col-lg-12 Starts -->
+        <div class="col-lg-12">
 
-<ol class="breadcrumb"><!-- breadcrumb Starts -->
+            <ol class="breadcrumb">
 
-<li>
+                <li>
+                    <i class="fa fa-dashboard"></i> Dashboard / Insert Products Category
+                </li>
 
-<i class="fa fa-dashboard"></i> Dashboard / Insert Products Category
+            </ol>
 
-</li>
+        </div>
 
-</ol><!-- breadcrumb Ends -->
+    </div>
 
-</div><!-- col-lg-12 Ends -->
+    <div class="row">
 
-</div><!-- 1 row Ends -->
+        <div class="col-lg-12">
 
-<div class="row"><!-- 2 row Starts -->
+            <div class="panel panel-default">
 
-<div class="col-lg-12"><!-- col-lg-12 Starts -->
+                <div class="panel-heading">
 
-<div class="panel panel-default"><!-- panel panel-default Starts -->
+                    <h3 class="panel-title">
+                        <i class="fa fa-money fa-fw"></i> Insert Product Category
+                    </h3>
 
-<div class="panel-heading" ><!-- panel-heading Starts -->
+                </div>
 
-<h3 class="panel-title" ><!-- panel-title Starts -->
+                <div class="panel-body">
 
-<i class="fa fa-money fa-fw" ></i> Insert Product Category
+                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                        
 
-</h3><!-- panel-title Ends -->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Product Category Title</label>
+                            <div class="col-md-6">
+                                <input type="text" name="p_cat_title" class="form-control" required>
+                            </div>
+                        </div>
 
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Show as Top Product Category</label>
+                            <div class="col-md-6">
+                                <input type="radio" name="p_cat_top" value="yes" required>
+                                <label> Yes </label>
+                                <input type="radio" name="p_cat_top" value="no" required>
+                                <label> No </label>
+                            </div>
+                        </div>
 
-</div><!-- panel-heading Ends -->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-6">
+                                <input type="submit" name="submit" value="Submit Now" class="btn btn-primary form-control">
+                            </div>
+                        </div>
 
+                    </form>
 
-<div class="panel-body" ><!-- panel-body Starts -->
+                </div>
 
-<form class="form-horizontal" action="" method="post" enctype="multipart/form-data" ><!-- form-horizontal Starts -->
+            </div>
 
-<div class="form-group" ><!-- form-group Starts -->
+        </div>
 
-<label class="col-md-3 control-label" >Product Category Title</label>
+    </div>
 
-<div class="col-md-6" >
+    <?php
 
-<input type="text" name="p_cat_title" class="form-control" >
+    if (isset($_POST['submit'])) {
 
-</div>
+        // Recoger datos del formulario
+        $p_cat_title = $_POST['p_cat_title'];
+        $p_cat_top = $_POST['p_cat_top'];
+        $p_cat_image = ''; // En este caso no hay imagen en el formulario, pero se puede dejar el campo vacío.
 
-</div><!-- form-group Ends -->
+        try {
+            // Insertar los datos en la base de datos
+            DB::table('product_categories')->insert([
+                'p_cat_title' => $p_cat_title,
+                'p_cat_top' => $p_cat_top,
+                'p_cat_image' => $p_cat_image,
+            ]);
 
-<div class="form-group" ><!-- form-group Starts -->
+            // Mensaje de éxito y redirección
+            echo "<script>alert('New Product Category Has Been Inserted')</script>";
+            echo "<script>window.open('index.php?view_p_cats','_self')</script>";
 
-<label class="col-md-3 control-label" >Show as Top Product Category</label>
-
-<div class="col-md-6" >
-
-<input type="radio" name="p_cat_top" value="yes" >
-
-<label> Yes </label>
-
-<input type="radio" name="p_cat_top" value="no" >
-
-<label> No </label>
-
-</div>
-
-</div><!-- form-group Ends -->
-
-<div class="form-group" ><!-- form-group Starts -->
-
-<label class="col-md-3 control-label" > Select Product Category Image</label>
-
-<div class="col-md-6" >
-
-<input type="file" name="p_cat_image" class="form-control" >
-
-</div>
-
-</div><!-- form-group Ends -->
-
-<div class="form-group" ><!-- form-group Starts -->
-
-<label class="col-md-3 control-label" ></label>
-
-<div class="col-md-6" >
-
-<input type="submit" name="submit" value="Submit Now" class="btn btn-primary form-control" >
-
-</div>
-
-</div><!-- form-group Ends -->
-
-</form><!-- form-horizontal Ends -->
-
-</div><!-- panel-body Ends -->
-
-
-</div><!-- panel panel-default Ends -->
-
-</div><!-- col-lg-12 Ends -->
-
-</div><!-- 2 row Ends -->
-
-<?php
-
-if(isset($_POST['submit'])){
-
-$p_cat_title = $_POST['p_cat_title'];
-
-$p_cat_top = $_POST['p_cat_top'];
-
-$p_cat_image = $_FILES['p_cat_image']['name'];
-
-$temp_name = $_FILES['p_cat_image']['tmp_name'];
-
-move_uploaded_file($temp_name,"other_images/$p_cat_image");
-
-$insert_p_cat = "insert into product_categories (p_cat_title,p_cat_top,p_cat_image) values ('$p_cat_title','$p_cat_top','$p_cat_image')";
-
-$run_p_cat = mysqli_query($con,$insert_p_cat);
-
-if($run_p_cat){
-
-echo "<script>alert('New Product Category Has been Inserted')</script>";
-
-echo "<script>window.open('index.php?view_p_cats','_self')</script>";
-
+        } catch (Exception $e) {
+            // Manejo de errores
+            echo "<script>alert('An error occurred: " . $e->getMessage() . "')</script>";
+        }
+    }
 }
-
-
-
-}
-
-
-
 ?>
-
-
-<?php } ?>

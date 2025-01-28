@@ -1,38 +1,25 @@
 <?php
 
-if(!isset($_SESSION['admin_email'])){
+    use Illuminate\Database\Capsule\Manager as DB;
+        
+    require_once __DIR__ . '/../vendor/autoload.php';
+    require_once __DIR__ . '/../database/db_connector.php';
 
-echo "<script>window.open('login.php','_self')</script>";
+    if(!isset($_SESSION['admin_email'])) {
 
-}
+        echo "<script>window.open('login.php','_self')</script>";
+        exit;
 
-else {
+    };
 
+    if(isset($_GET['user_delete'])){
+        $delete_id = $_GET['user_delete'];
+        $run_delete = DB::table('admins')->where('admin_id', $delete_id)->delete();
 
-?>
+        if($run_delete){
+            echo "<script>alert('One Product Has been deleted')</script>";
+            echo "<script>window.open('index.php?view_users','_self')</script>";
 
-<?php
+        }
 
-if(isset($_GET['user_delete'])){
-
-$delete_id = $_GET['user_delete'];
-
-$delete_user = "delete from admins where admin_id='$delete_id'";
-
-$run_delete = mysqli_query($con,$delete_user);
-
-if($run_delete){
-
-echo "<script>alert('One User Has Been Deleted')</script>";
-
-echo "<script>window.open('index.php?view_users','_self')</script>";
-
-}
-
-
-}
-
-
-?>
-
-<?php } ?>
+    }
