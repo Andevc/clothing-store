@@ -75,12 +75,20 @@
                 <?php foreach($products as $product): ?>
                     <div class="swiper-slide">
                         <div class="swiper-card">
-                            <img src="<?= $product->product_img1; ?>" alt="<?= htmlspecialchars($product->product_title); ?>" class="swiper-card-img">
+                            <img src="<?= $product->product_img1; ?>" alt="<?= $product->product_title; ?>" class="swiper-card-img">
                             <div class="swiper-card-info">
-                                <h3 class="swiper-card-title"><?= htmlspecialchars($product->product_title); ?></h3>
-                                <p class="swiper-card-price">$<?= htmlspecialchars($product->product_price); ?></p>
-                                <p class="swiper-card-manufacturer">Fabricante: <?= htmlspecialchars($product->manufacturer_title); ?></p>
-                                <p class="swiper-card-desc"><?= htmlspecialchars($product->product_desc); ?></p>
+                                <h3 class="swiper-card-title"><?= $product->product_title; ?></h3>
+                                <p class="card-manufacturer">Marca: <?= $product->manufacturer_title; ?></p>
+                                <div class="card-info-price">
+                                    <p class="swiper-card-price"><del>$<?= $product->product_price; ?></del></p>
+                                    <p class="swiper-card-price-1">$<?= $product->product_psp_price; ?></p>    
+                                </div>
+                                
+                                
+                                <p class="swiper-card-desc"><?= $product->product_desc; ?></p>
+                                <p class="swiper-card-desc"><?= $product->product_features; ?></p>
+
+                                
                             </div>
                         </div>
                     </div>
@@ -101,7 +109,7 @@
                 slidesPerView: 1.5,
                 loop: true,
                 autoplay:{
-                    delay:5000,
+                    delay: 3000,
                 },
                 coverflowEffect: {
                     rotate: 20,

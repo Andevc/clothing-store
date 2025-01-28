@@ -75,7 +75,9 @@ body {
     background-color: #f9f9f9;
     border-radius: 2em;
     padding: 1.5em;
+    text-align: center;
 }
+
 .card img{
     border-radius: 1em;
     width: 100%;
@@ -90,10 +92,13 @@ body {
     color: #555050;
 }
 .products {
-    display: inline-block;
-    border: 1px solid red;
+    display: block;
     padding: 2em 6em;
-    height: 100dvh;
+    
+}
+
+.swiper-card-info *{
+    border: 1px solid green;
 }
 
 .products h2{

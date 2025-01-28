@@ -1,76 +1,82 @@
 *{
     margin: 0;
     box-sizing: border-box;
+    font-family: var(--font-roboto);
 }
-.swiper, .swiper-wrapper{ 
-    
-    
-    border: 1px solid orangered;
+.mySwiper { 
+    padding: 2em 0;
+    height: 500px; 
     position: relative;
 } 
 
-.swiper-slide { 
-    margin: 0;
-    background-color: white;
-    
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    border-radius: 18px; 
-    font-size: 22px; 
-    font-weight: bold; 
-    color: #191919; 
-}
-
-
-
 .swiper-card {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    grid-template-columns: 3fr 4fr;
+    gap: 1em;
+    backdrop-filter: blur(4em);
+    border-radius: 2em;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 100%;
-    padding: 1em;
+    padding: 1.5em;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 
 .swiper-card img {
-    width: 80%;
-    object-fit: contain;
+    background-color: white;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 0 10px #33333355;
     border-radius: 2em;
     height: 100%;
 }
 
 .swiper-card-info {
-    padding: 20px;
-    flex: 1;
-    display: flex;
+    background-color: white;
+    /* display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around; */
+    padding: 1em;
+    border-radius: 2em;
+    box-shadow: 0 0 10px #33333355;
 }
 
 .swiper-card-title {
-    font-size: 1.5rem;
+    font-family: var(--font-rolling);
+    font-size: 2em;
     font-weight: 700;
     color: #333;
     margin-bottom: 10px;
 }
 
+.card-info-price{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1em;
+}
+
 .swiper-card-price {
+    font-size: 1.2rem;
+    color: #ae2727;
+    font-weight: 600;
+    
+}
+.swiper-card-price-1{
     font-size: 1.2rem;
     color: #27ae60;
     font-weight: 600;
-    margin-bottom: 10px;
 }
 
-.swiper-card-manufacturer {
+.card-manufacturer {
+    width: 10%;
     font-size: 1rem;
-    color: #777;
-    margin-bottom: 10px;
+    background: #e2b766;
+    color: #333;
+    padding: 1em 2.5em;
+    width: auto;
 }
 
 .swiper-card-desc {
