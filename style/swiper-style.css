@@ -34,14 +34,16 @@
 }
 
 .swiper-card-info {
-    background-color: white;
-    /* display: flex;
+    background-color: #f5e9cf;
+    display: flex;
     flex-direction: column;
-    justify-content: space-around; */
+    justify-content: space-evenly;
     padding: 1em;
     border-radius: 2em;
     box-shadow: 0 0 10px #33333355;
+
 }
+
 
 .swiper-card-title {
     font-family: var(--font-rolling);
@@ -49,13 +51,19 @@
     font-weight: 700;
     color: #333;
     margin-bottom: 10px;
+    padding: .2em;
 }
 
-.card-info-price{
+.card-info{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     gap: 1em;
+    
+}
+.card-info-cat{
+    font-size: 1.5em;
+    padding: .3em;
 }
 
 .swiper-card-price {
@@ -71,11 +79,11 @@
 }
 
 .card-manufacturer {
-    width: 10%;
+    
     font-size: 1rem;
-    background: #e2b766;
-    color: #333;
-    padding: 1em 2.5em;
+    font-weight: bold;
+    color: #191919;
+    
     width: auto;
 }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 25-01-2025 a las 03:05:34
+-- Tiempo de generación: 28-01-2025 a las 05:53:44
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -70,7 +70,6 @@ INSERT INTO `coupons` (`coupon_id`, `product_id`, `coupon_title`, `coupon_price`
 (3, 10, 'Descuento Black Friday', 75.00, 'BF75', 50, 10),
 (4, 15, 'Descuento Año Nuevo', 40.00, 'NEWYEAR40', 150, 49),
 (5, 20, 'Descuento de Invierno', 60.00, 'WINTER60', 80, 21);
-
 
 -- --------------------------------------------------------
 
@@ -271,27 +270,26 @@ CREATE TABLE `products` (
 -- Volcado de datos para la tabla `products`
 --
 
-
 INSERT INTO `products` (`product_id`, `p_cat_id`, `manufacturer_id`, `product_title`, `product_url`, `product_img1`, `product_stock`, `product_price`, `product_psp_price`, `product_desc`, `product_features`, `product_keywords`, `product_label`, `status`, `date`, `product_user_type`) VALUES
 (1, 8, 1, 'Adidas Winter Coat', 'adidas-winter-coat', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033059/img-1_cd7tpv.jpg', 20, 199.99, 179.99, 'Warm and water-resistant winter coat by Adidas, ideal for cold weather.', 'Insulated, water-resistant, zipper pockets', 'winter, coat, Adidas, insulated, water-resistant', 'New', 'Available', '2025-01-01 10:00:00', 'M'),
-(2, 6, 4, 'Levis Slim-Fit Jeans', 'levis-slim-fit-jeans', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033058/img-2_pxncw4.jpg', 50, 89.99, NULL, 'Dark blue slim-fit jeans from Levis, perfect for modern and casual looks.', 'High-quality stitching, durable fabric', 'jeans, slim-fit, Levis, casual, modern', 'Bestseller', 'Available', '2025-01-02 11:30:00', 'M'),
+(2, 6, 4, 'Levis Slim-Fit Jeans', 'levis-slim-fit-jeans', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033058/img-2_pxncw4.jpg', 50, 89.99, 69.99, 'Dark blue slim-fit jeans from Levis, perfect for modern and casual looks.', 'High-quality stitching, durable fabric', 'jeans, slim-fit, Levis, casual, modern', 'Bestseller', 'Available', '2025-01-28 04:01:19', 'M'),
 (3, 12, 2, 'Zara Casual T-Shirt', 'zara-casual-tshirt', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033058/img-3_x74pyf.jpg', 100, 29.99, 24.99, 'Soft cotton t-shirt from Zara, ideal for everyday wear.', 'Breathable fabric, lightweight', 't-shirt, casual, Zara, soft cotton', 'Sale', 'Available', '2025-01-03 09:45:00', 'M'),
-(4, 4, 3, 'H&M Summer Dress', 'hm-summer-dress', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033057/img-4_qmjflm.jpg', 35, 49.99, NULL, 'Lightweight floral-patterned summer dress by H&M.', 'Flowy design, vibrant pattern', 'summer, dress, H&M, floral, lightweight', 'Featured', 'Available', '2025-01-04 14:15:00', 'F'),
+(4, 4, 3, 'H&M Summer Dress', 'hm-summer-dress', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033057/img-4_qmjflm.jpg', 35, 49.99, 25.99, 'Lightweight floral-patterned summer dress by H&M.', 'Flowy design, vibrant pattern', 'summer, dress, H&M, floral, lightweight', 'Featured', 'Available', '2025-01-28 04:02:15', 'F'),
 (5, 5, 6, 'Calvin Klein Leather Jacket', 'calvin-klein-leather-jacket', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033059/img-5_c2ogtx.jpg', 15, 299.99, 269.99, 'Sleek black leather jacket from Calvin Klein, perfect for a stylish look.', 'Genuine leather, slim fit', 'leather jacket, Calvin Klein, stylish, black', 'Limited', 'Available', '2025-01-05 12:00:00', 'M'),
 (6, 10, 5, 'Tommy Hilfiger Suit Set', 'tommy-hilfiger-suit-set', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033058/img-6_t35azf.jpg', 10, 499.99, 459.99, 'Elegant navy blue suit set by Tommy Hilfiger, tailored for formal occasions.', 'Premium fabric, precise stitching', 'suit set, Tommy Hilfiger, formal, navy blue', 'Exclusive', 'Available', '2025-01-06 13:25:00', 'M'),
-(7, 13, 2, 'Zara Sleeveless Top', 'zara-sleeveless-top', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033058/img-7_t3stdl.jpg', 80, 19.99, NULL, 'Pastel pink sleeveless top from Zara, perfect for summer.', 'Breathable, lightweight', 'sleeveless top, Zara, summer, pastel pink', 'Trending', 'Available', '2025-01-07 15:45:00', 'F'),
+(7, 13, 2, 'Zara Sleeveless Top', 'zara-sleeveless-top', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033058/img-7_t3stdl.jpg', 80, 49.99, 39.99, 'Pastel pink sleeveless top from Zara, perfect for summer.', 'Breathable, lightweight', 'sleeveless top, Zara, summer, pastel pink', 'Trending', 'Available', '2025-01-28 04:02:38', 'F'),
 (8, 11, 3, 'H&M Wool Sweater', 'hm-wool-sweater', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033151/img-8_bujpbu.jpg', 40, 59.99, 49.99, 'Beige wool sweater by H&M, cozy for chilly days.', 'Soft wool fabric, textured design', 'sweater, wool, H&M, cozy', 'Classic', 'Available', '2025-01-08 10:15:00', 'F'),
 (9, 7, 8, 'Prada Silk Shirt', 'prada-silk-shirt', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033058/img-9_zbb44e.jpg', 25, 399.99, 379.99, 'Ivory white silk shirt by Prada, luxurious and elegant.', 'Smooth silk fabric, premium quality', 'silk shirt, Prada, luxurious, elegant', 'Premium', 'Available', '2025-01-09 11:00:00', 'F'),
-(10, 8, 4, 'Levis Denim Shorts', 'levis-denim-shorts', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033058/img-10_n2nmew.jpg', 60, 49.99, NULL, 'Classic blue denim shorts from Levis, casual and durable.', 'High-quality denim, casual design', 'denim shorts, Levis, casual, durable', 'Hot', 'Available', '2025-01-10 14:00:00', 'M'),
+(10, 8, 4, 'Levis Denim Shorts', 'levis-denim-shorts', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033058/img-10_n2nmew.jpg', 60, 79.99, 59.99, 'Classic blue denim shorts from Levis, casual and durable.', 'High-quality denim, casual design', 'denim shorts, Levis, casual, durable', 'Hot', 'Available', '2025-01-28 04:03:11', 'M'),
 (11, 1, 7, 'Gucci Silk Blouse', 'gucci-silk-blouse', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033058/img-11_rng43m.jpg', 12, 599.99, 549.99, 'Deep emerald green silk blouse by Gucci, sleek and luxurious.', 'High-quality silk, elegant design', 'silk blouse, Gucci, luxurious, emerald green', 'Exclusive', 'Available', '2025-01-11 16:00:00', 'F'),
 (12, 9, 5, 'Tommy Hilfiger Skirt', 'tommy-hilfiger-skirt', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033057/img-12_kwjhfb.jpg', 30, 79.99, 69.99, 'Dark gray skirt by Tommy Hilfiger, with a modern and classic design.', 'Premium fabric, classic cut', 'skirt, Tommy Hilfiger, classic, gray', 'Trending', 'Available', '2025-01-12 11:45:00', 'F'),
-(13, 2, 1, 'Adidas Cardigan', 'adidas-cardigan', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033057/img-13_g7gr6p.jpg', 25, 69.99, NULL, 'Light gray cardigan by Adidas, stylish and comfortable.', 'Soft fabric, casual design', 'cardigan, Adidas, light gray, casual', 'Bestseller', 'Available', '2025-01-13 13:30:00', 'M'),
+(13, 2, 2, 'Adidas Cardigan', 'adidas-cardigan', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033057/img-13_g7gr6p.jpg', 25, 69.99, 59.99, 'Light gray cardigan by Adidas, stylish and comfortable.', 'Soft fabric, casual design', 'cardigan, Adidas, light gray, casual', 'Bestseller', 'Available', '2025-01-28 04:03:39', 'M'),
 (14, 12, 6, 'Calvin Klein T-Shirt', 'calvin-klein-tshirt', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033056/img-14_sbywfz.jpg', 100, 34.99, 29.99, 'Black cotton t-shirt by Calvin Klein, simple and durable.', 'Soft cotton, high-quality stitching', 't-shirt, Calvin Klein, casual, black', 'Sale', 'Available', '2025-01-14 09:00:00', 'M'),
 (15, 4, 8, 'Prada Elegant Dress', 'prada-elegant-dress', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033056/img-15_tx2oqu.jpg', 8, 899.99, 849.99, 'Deep crimson elegant dress by Prada, perfect for special occasions.', 'Luxurious fabric, refined design', 'elegant dress, Prada, luxurious, crimson', 'Exclusive', 'Available', '2025-01-15 17:15:00', 'F'),
 (16, 12, 7, 'Gucci Casual T-shirt', 'gucci-casual-tshirt', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033057/img-16_nsrio0.jpg', 100, 129.99, 109.99, 'Trendy navy blue t-shirt for casual wear.', 'Premium fabric, modern fit', 'tshirt, gucci', 'New', 'Active', '2023-09-01 10:00:00', 'M'),
 (17, 5, 3, 'H&M Quilted Jacket', 'hm-quilted-jacket', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033057/img-17_xhye9k.jpg', 40, 99.99, 89.99, 'Insulated olive green quilted jacket.', 'Warm, durable design', 'jacket, quilted, h&m', 'Hot', 'Active', '2023-11-15 13:00:00', 'M'),
-(18, 8, 2, 'Zara Denim Shorts', 'zara-denim-shorts', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033056/img-18_qdfgix.jpg', 110, 39.99, NULL, 'Trendy light blue denim shorts.', 'Comfortable, durable', 'shorts, denim, zara', 'Trending', 'Active', '2023-06-10 16:15:00', 'F'),
-(19, 5, 6, 'Calvin Klein Wool Coat', 'ck-wool-coat', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033056/img-19_kdk6y2.jpg', 30, 189.99, NULL, 'Premium wool coat for winter.', 'Warm, elegant fit', 'coat, wool, ck', 'Luxury', 'Active', '2023-12-20 08:45:00', 'M'),
+(18, 8, 2, 'Zara Denim Shorts', 'zara-denim-shorts', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033056/img-18_qdfgix.jpg', 110, 39.99, 25.99, 'Trendy light blue denim shorts.', 'Comfortable, durable', 'shorts, denim, zara', 'Trending', 'Active', '2025-01-28 04:04:06', 'F'),
+(19, 5, 7, 'Calvin Klein Wool Coat', 'ck-wool-coat', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033056/img-19_kdk6y2.jpg', 30, 189.99, 169.99, 'Premium wool coat for winter.', 'Warm, elegant fit', 'coat, wool, ck', 'Luxury', 'Active', '2025-01-28 04:04:27', 'M'),
 (20, 13, 4, 'Levis Casual Top', 'levis-casual-top', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033056/img-20_enmenj.jpg', 140, 24.99, 19.99, 'Lightweight casual top in pastel blue.', 'Soft, trendy design', 'top, casual, levis', 'Sale', 'Active', '2023-10-10 14:30:00', 'F');
 
 -- --------------------------------------------------------

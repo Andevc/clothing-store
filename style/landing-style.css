@@ -97,9 +97,7 @@ body {
     
 }
 
-.swiper-card-info *{
-    border: 1px solid green;
-}
+
 
 .products h2{
     font-family: var(--font-bailies);
@@ -123,12 +121,18 @@ body {
 }
 
 
-.benefits > .benefit{
-    padding: 1.5em;
+.benefit-content{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5em ;
+
+}
+.benefit-card{
+    background: #fff;
+    box-shadow: 0 0 10px #19191955;
+    padding: 2em;
     text-align: center;
-    background-color: #ffffff;
-    border-radius: 2em;
-    
+    border-radius: 2.5em;
 }
 .benefits h2 {
     font-family: var(--font-bailies);
@@ -136,6 +140,10 @@ body {
     margin-bottom: 40px;
     font-size: 3em;
     color: #333;
+}
+.benefit-card h5{
+    font-size: 1.5em;
+    margin-bottom: 1em;
 }
 
 .footer {
@@ -153,7 +161,6 @@ body {
     font-size: 1em;
     font-weight: bold;
     text-decoration: none;
-    box-shadow: 0 0 20px #191919;
     transition: .5s ease;
 }
 

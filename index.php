@@ -78,17 +78,22 @@
                             <img src="<?= $product->product_img1; ?>" alt="<?= $product->product_title; ?>" class="swiper-card-img">
                             <div class="swiper-card-info">
                                 <h3 class="swiper-card-title"><?= $product->product_title; ?></h3>
-                                <p class="card-manufacturer">Marca: <?= $product->manufacturer_title; ?></p>
-                                <div class="card-info-price">
-                                    <p class="swiper-card-price"><del>$<?= $product->product_price; ?></del></p>
-                                    <p class="swiper-card-price-1">$<?= $product->product_psp_price; ?></p>    
+                                <div class="card-info card-info-cat">
+                                    <p class="card-manufacturer"><?= $product->manufacturer_title; ?></p>
+                                    <p class="card-manufacturer"><?= $product->product_user_type; ?></p>
                                 </div>
-                                
-                                
-                                <p class="swiper-card-desc"><?= $product->product_desc; ?></p>
-                                <p class="swiper-card-desc"><?= $product->product_features; ?></p>
-
-                                
+                                <div>
+                                    <p>Price: </p>
+                                    <div class="card-info">
+                                        
+                                        <p class="swiper-card-price"><del>$<?= $product->product_price; ?></del></p>
+                                        <p class="swiper-card-price-1">$<?= $product->product_psp_price; ?></p>    
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="swiper-card-desc"><?= $product->product_desc; ?></p>
+                                    <p class="swiper-card-desc"><?= $product->product_features; ?></p>
+                                </div>                               
                             </div>
                         </div>
                     </div>
@@ -129,16 +134,16 @@
      
     <div class="benefits">
         <h2 data-aos="fade-up">Beneficios Clave</h2>
-        <div class="row ">
-            <div class="col-md-4 benefit" data-aos="fade-right">
+        <div class="benefit-content ">
+            <div class="benefit-card" data-aos="fade-right">
                 <h5>Comodidad</h5>
                 <p>Realiza tus compras desde cualquier lugar y en cualquier momento.</p>
             </div>
-            <div class="col-md-4 benefit" data-aos="fade-up">
+            <div class="benefit-card" data-aos="fade-up">
                 <h5>Seguridad</h5>
                 <p>Tus datos están protegidos con nosotros.</p>
             </div>
-            <div class="col-md-4 benefit" data-aos="fade-left">
+            <div class="benefit-card" data-aos="fade-left">
                 <h5>Atención Personalizada</h5>
                 <p>Ofrecemos soporte rápido y personalizado para todos nuestros clientes.</p>
             </div>
