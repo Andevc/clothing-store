@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 28-01-2025 a las 04:22:04
+-- Tiempo de generación: 25-01-2025 a las 03:05:34
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -65,11 +65,12 @@ CREATE TABLE `coupons` (
 --
 
 INSERT INTO `coupons` (`coupon_id`, `product_id`, `coupon_title`, `coupon_price`, `coupon_code`, `coupon_limit`, `coupon_used`) VALUES
+(1, 1, 'Descuento Navidad', 50.00, 'XMAS50', 100, 20),
 (2, 5, 'Descuento Verano', 30.00, 'SUMMER30', 200, 80),
 (3, 10, 'Descuento Black Friday', 75.00, 'BF75', 50, 10),
 (4, 15, 'Descuento Año Nuevo', 40.00, 'NEWYEAR40', 150, 49),
-(5, 20, 'Descuento de Invierno', 60.00, 'WINTER60', 80, 21),
-(6, 25, 'Descuento Especial', 20.00, 'SPECIAL20', 300, 179);
+(5, 20, 'Descuento de Invierno', 60.00, 'WINTER60', 80, 21);
+
 
 -- --------------------------------------------------------
 
@@ -114,8 +115,7 @@ INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_email`, `cust
 (18, 'Whitney', 'wwabbh@cbc.ca', 'tX8Z5', 'Albania', 'Laç', '7th Floor', '1731763212', 'https://as1.ftcdn.net/v2/jpg/01/16/24/44/1000_F_116244459_pywR1e0T3H7FPk3LTMjG6jsL3UchDpht.jpg'),
 (19, 'Kilian', 'khalmsi@icio.us', 'bU3`mv', 'South Korea', 'Kyosai', 'PO Box 98908', '5798060470', 'https://icons.veryicon.com/png/o/miscellaneous/user-avatar/user-avatar-male-5.png'),
 (20, 'Imojean', 'ibeckfordj@google.com', 'rV9Ym', 'Thailand', 'Wiphawadi', '8th Floor', '4572689377', 'https://icons.veryicon.com/png/o/miscellaneous/user-avatar/user-avatar-male-5.png'),
-(10101, 'Andev', 'andev@gmail.com', 'andev', 'Bolivia', 'La Paz', '81276345', 'xxxx-xxx-xx-x-x', 'https://res.cloudinary.com/dn2zvlabb/image/upload/v1718511912/MarcusAurelius_lnmssb.jpg'),
-(10102, 'andev', 'xdg@mail.com', '1234', 'australia', 'prueba', '12345432', 'lugar x calle v ', NULL);
+(10101, 'Andev', 'andev@gmail.com', 'andev', 'Bolivia', 'La Paz', '81276345', 'xxxx-xxx-xx-x-x', 'https://res.cloudinary.com/dn2zvlabb/image/upload/v1718511912/MarcusAurelius_lnmssb.jpg');
 
 -- --------------------------------------------------------
 
@@ -178,6 +178,7 @@ CREATE TABLE `manufacturers` (
 --
 
 INSERT INTO `manufacturers` (`manufacturer_id`, `manufacturer_title`, `manufacturer_top`, `manufacturer_image`) VALUES
+(1, 'Nike', 'yes', ''),
 (2, 'Adidas', 'no', ''),
 (3, 'Zara', 'no', ''),
 (4, 'H&M', 'yes', ''),
@@ -203,13 +204,6 @@ CREATE TABLE `payments` (
   `payment_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `payments`
---
-
-INSERT INTO `payments` (`payment_id`, `invoice_no`, `amount`, `payment_mode`, `ref_no`, `code`, `payment_date`) VALUES
-(10101, 'INV1002', 39.99, 'Paypal', '2323', '2398389', '2025-01-28 00:24:49');
-
 -- --------------------------------------------------------
 
 --
@@ -232,7 +226,7 @@ CREATE TABLE `pending_orders` (
 
 INSERT INTO `pending_orders` (`order_id`, `customer_id`, `invoice_no`, `product_id`, `qty`, `size`, `order_status`) VALUES
 (1, 3, 'INV1001', 4, 2, 'M', 'pending'),
-(3, 7, 'INV1003', 21, 3, 'S', 'pending'),
+(2, 5, 'INV1002', 3, 1, 'L', 'complete'),
 (4, 1, 'INV1004', 4, 1, 'M', 'complete'),
 (5, 10, 'INV1005', 5, 2, 'XL', 'pending'),
 (6, 15, 'INV1006', 8, 4, 'L', 'complete'),
@@ -241,11 +235,9 @@ INSERT INTO `pending_orders` (`order_id`, `customer_id`, `invoice_no`, `product_
 (9, 14, 'INV1009', 1, 1, 'L', 'pending'),
 (10, 4, 'INV1010', 11, 1, 'M', 'complete'),
 (11, 6, 'INV1011', 6, 3, 'XL', 'pending'),
-(12, 9, 'INV1012', 21, 2, 'S', 'complete'),
 (13, 11, 'INV1013', 12, 1, 'L', 'pending'),
-(14, 2, 'INV1014', 28, 2, 'M', 'complete'),
 (15, 20, 'INV1015', 17, 1, 'XL', 'pending'),
-(16, 13, 'INV1016', 25, 2, 'S', 'complete'),
+(17, 18, 'INV1017', 19, 3, 'L', 'pending'),
 (18, 17, 'INV1018', 13, 1, 'M', 'complete'),
 (19, 16, 'INV1019', 2, 4, 'S', 'pending'),
 (20, 19, 'INV1020', 7, 1, 'XL', 'complete');
@@ -279,33 +271,28 @@ CREATE TABLE `products` (
 -- Volcado de datos para la tabla `products`
 --
 
+
 INSERT INTO `products` (`product_id`, `p_cat_id`, `manufacturer_id`, `product_title`, `product_url`, `product_img1`, `product_stock`, `product_price`, `product_psp_price`, `product_desc`, `product_features`, `product_keywords`, `product_label`, `status`, `date`, `product_user_type`) VALUES
-(1, 3, 2, 'Casual T-Shirt', 'casual-t-shirt', '', 0, 15.99, 12.99, 'A comfortable cotton t-shirt for daily wear.', 'Soft fabric, breathable, machine washable.', 't-shirt, casual, cotton', 'New Arrival', 'product', '2022-03-15 08:00:00', NULL),
-(2, 7, 4, 'Denim Jeans', 'denim-jeans', 'https://res.cloudinary.com/andevstorage/image/upload/v1737937391/jean-1_ee1kr9.jpg', 0, 39.99, 29.99, 'Classic denim jeans with a modern fit.', 'Slim fit, durable fabric, multiple sizes.', 'jeans, denim, slim fit', 'Best Seller', 'product', '2025-01-27 00:29:09', NULL),
-(4, 5, 3, 'Floral Dress', 'floral-dress', '', 0, 45.99, 35.99, 'Elegant floral dress for casual or formal occasions.', 'Flowy fabric, vibrant prints, adjustable straps.', 'dress, floral, elegant', 'On Sale', 'product', '2020-06-30 08:00:00', NULL),
-(5, 12, 6, 'Running Shoes', 'running-shoes', '', 0, 89.99, 74.99, 'Comfortable running shoes with excellent grip.', 'Lightweight, cushioned sole, breathable material.', 'shoes, running, fitness', 'Top Rated', 'product', '2023-04-10 08:00:00', NULL),
-(6, 4, 8, 'Leather Wallet', 'leather-wallet', 'https://res.cloudinary.com/andevstorage/image/upload/v1737937390/shirt-2_s4jfiq.jpg', 0, 29.99, 24.99, 'Premium leather wallet with multiple compartments.', 'Durable, stylish, compact design.', 'wallet, leather, accessories', '', 'product', '2025-01-27 00:29:42', NULL),
-(7, 14, 5, 'Winter Coat', 'winter-coat', '', 0, 120.99, 99.99, 'Warm winter coat with a sleek design.', 'Insulated, waterproof, adjustable fit.', 'coat, winter, insulated', '', 'product', '2022-12-20 08:00:00', NULL),
-(8, 1, 9, 'Graphic Hoodie', 'graphic-hoodie', '\r\nhttps://res.cloudinary.com/andevstorage/image/upload/v1737319558/sweater-2_bdnyiq.jpg', 0, 49.99, 39.99, 'Trendy hoodie with a unique graphic design.', 'Soft fleece, kangaroo pocket, hooded.', 'hoodie, graphic, casual', 'Limited Edition', 'product', '2025-01-27 00:31:11', NULL),
-(9, 6, 7, 'Formal Shirt', 'formal-shirt', '', 0, 34.99, 29.99, 'Classic formal shirt for office or events.', 'Slim fit, wrinkle-free, multiple colors.', 'shirt, formal, office wear', '', 'product', '2020-08-23 08:00:00', NULL),
-(10, 9, 2, 'Cargo Pants', 'cargo-pants', '', 0, 54.99, 44.99, 'Utility cargo pants with multiple pockets.', 'Relaxed fit, durable fabric, adjustable waist.', 'pants, cargo, utility', 'Trending', 'product', '2021-03-01 08:00:00', NULL),
-(11, 13, 5, 'Yoga Leggings', 'yoga-leggings', '', 0, 25.99, 20.99, 'Stretchy and breathable yoga leggings.', 'High waist, quick-dry fabric, multiple colors.', 'leggings, yoga, fitness', 'Popular', 'product', '2021-05-11 08:00:00', NULL),
-(12, 8, 4, 'Bomber Jacket', 'bomber-jacket', '', 0, 69.99, 55.99, 'Classic bomber jacket for a trendy look.', 'Lightweight, ribbed cuffs, zipper closure.', 'jacket, bomber, casual', '', 'product', '2022-10-18 08:00:00', NULL),
-(13, 2, 6, 'Graphic Tee', 'graphic-tee', '', 0, 19.99, 14.99, 'Cool graphic tee with vibrant prints.', 'Soft cotton, unisex design, regular fit.', 't-shirt, graphic, casual', 'Hot', 'product', '2020-12-25 08:00:00', NULL),
-(14, 15, 7, 'Chinos Pants', 'chinos-pants', '', 0, 49.99, 39.99, 'Comfortable chinos for work and casual wear.', 'Slim fit, stretchable fabric, wrinkle-resistant.', 'pants, chinos, casual', '', 'product', '2023-06-01 08:00:00', NULL),
-(15, 5, 9, 'Puffer Vest', 'puffer-vest', 'https://res.cloudinary.com/andevstorage/image/upload/v1737937391/A_high-quality_image_of_a_silky_blouse_on_an_invisible_mannequin_against_a_bright_white_background._The_soft_flowing_fabric_is_draped_naturally_with_lighting_enhancing_its_shine_and_texture._okwid9.jpg', 0, 59.99, 45.99, 'Warm and lightweight puffer vest.', 'Insulated, sleeveless, zip pockets.', 'vest, puffer, winter', 'Trending', 'product', '2025-01-27 00:34:11', NULL),
-(16, 3, 2, 'Polka Dot Skirt', 'polka-dot-skirt', '', 0, 35.99, 29.99, 'Chic polka dot skirt for casual outings.', 'Flowy fabric, elastic waistband, knee-length.', 'skirt, polka dot, chic', '', 'product', '2022-08-22 08:00:00', NULL),
-(17, 7, 8, 'Track Jacket', 'track-jacket', '', 0, 44.99, 34.99, 'Lightweight track jacket for sports.', 'Breathable fabric, zip closure, stylish design.', 'jacket, track, sports', 'New', 'product', '2021-04-12 08:00:00', NULL),
-(18, 9, 3, 'Cropped Top', 'cropped-top', '', 0, 24.99, 19.99, 'Trendy cropped top for summer wear.', 'Soft fabric, short sleeves, relaxed fit.', 'top, cropped, summer', '', 'product', '2020-07-05 08:00:00', NULL),
-(20, 14, 5, 'Oversized Hoodie', 'oversized-hoodie', '', 0, 39.99, 29.99, 'Comfortable oversized hoodie for a relaxed look.', 'Soft fleece, kangaroo pocket, adjustable hood.', 'hoodie, oversized, casual', 'Limited', 'product', '2023-03-14 08:00:00', NULL),
-(21, 6, 3, 'V-Neck Sweater', 'v-neck-sweater', '', 0, 34.99, 29.99, 'Classic V-neck sweater for a casual or formal look.', 'Soft fabric, slim fit, multiple colors.', 'sweater, v-neck, casual', '', 'product', '2020-09-22 08:00:00', NULL),
-(22, 12, 7, 'Raincoat', 'raincoat', '', 0, 59.99, 49.99, 'Waterproof raincoat with a hood.', 'Lightweight, packable, stylish design.', 'raincoat, waterproof, outdoor', '', 'product', '2021-02-14 08:00:00', NULL),
-(23, 5, 2, 'Maxi Dress', 'maxi-dress', '', 0, 69.99, 54.99, 'Flowy maxi dress for special occasions.', 'Elegant design, breathable fabric, ankle-length.', 'dress, maxi, formal', 'New Arrival', 'product', '2022-04-05 08:00:00', NULL),
-(24, 10, 6, 'Polo Shirt', 'polo-shirt', '', 0, 29.99, 24.99, 'Classic polo shirt for casual and semi-formal wear.', 'Soft cotton, breathable fabric, multiple sizes.', 'shirt, polo, semi-formal', '', 'product', '2023-05-07 08:00:00', NULL),
-(25, 8, 9, 'Denim Jacket', 'denim-jacket', 'https://res.cloudinary.com/andevstorage/image/upload/v1737937390/short_hr1zjr.jpg', 0, 79.99, 64.99, 'Timeless denim jacket with a modern fit.', 'Durable fabric, stylish design, unisex.', 'jacket, denim, casual', 'Trending', 'product', '2025-01-27 00:35:53', NULL),
-(26, 15, 4, 'Cargo Shorts', 'cargo-shorts', '', 0, 39.99, 29.99, 'Practical cargo shorts with multiple pockets.', 'Relaxed fit, durable fabric, adjustable waist.', 'shorts, cargo, utility', '', 'product', '2023-03-30 08:00:00', NULL),
-(27, 9, 8, 'Workout Tank Top', 'workout-tank-top', '', 0, 19.99, 15.99, 'Breathable tank top for workouts.', 'Quick-dry fabric, racerback design, unisex.', 'tank top, workout, fitness', '', 'product', '2021-06-20 08:00:00', NULL),
-(28, 1, 5, 'Graphic Sweater', 'graphic-sweater', 'https://res.cloudinary.com/dn2zvlabb/image/upload/v1737319577/sweater-4_s55mh4.jpg', 0, 49.99, 39.99, 'Trendy graphic sweater with bold prints.', 'Soft fleece, relaxed fit, vibrant colors.', 'sweater, graphic, casual', '', 'product', '2025-01-20 03:28:55', NULL);
+(1, 8, 1, 'Adidas Winter Coat', 'adidas-winter-coat', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033059/img-1_cd7tpv.jpg', 20, 199.99, 179.99, 'Warm and water-resistant winter coat by Adidas, ideal for cold weather.', 'Insulated, water-resistant, zipper pockets', 'winter, coat, Adidas, insulated, water-resistant', 'New', 'Available', '2025-01-01 10:00:00', 'M'),
+(2, 6, 4, 'Levis Slim-Fit Jeans', 'levis-slim-fit-jeans', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033058/img-2_pxncw4.jpg', 50, 89.99, NULL, 'Dark blue slim-fit jeans from Levis, perfect for modern and casual looks.', 'High-quality stitching, durable fabric', 'jeans, slim-fit, Levis, casual, modern', 'Bestseller', 'Available', '2025-01-02 11:30:00', 'M'),
+(3, 12, 2, 'Zara Casual T-Shirt', 'zara-casual-tshirt', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033058/img-3_x74pyf.jpg', 100, 29.99, 24.99, 'Soft cotton t-shirt from Zara, ideal for everyday wear.', 'Breathable fabric, lightweight', 't-shirt, casual, Zara, soft cotton', 'Sale', 'Available', '2025-01-03 09:45:00', 'M'),
+(4, 4, 3, 'H&M Summer Dress', 'hm-summer-dress', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033057/img-4_qmjflm.jpg', 35, 49.99, NULL, 'Lightweight floral-patterned summer dress by H&M.', 'Flowy design, vibrant pattern', 'summer, dress, H&M, floral, lightweight', 'Featured', 'Available', '2025-01-04 14:15:00', 'F'),
+(5, 5, 6, 'Calvin Klein Leather Jacket', 'calvin-klein-leather-jacket', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033059/img-5_c2ogtx.jpg', 15, 299.99, 269.99, 'Sleek black leather jacket from Calvin Klein, perfect for a stylish look.', 'Genuine leather, slim fit', 'leather jacket, Calvin Klein, stylish, black', 'Limited', 'Available', '2025-01-05 12:00:00', 'M'),
+(6, 10, 5, 'Tommy Hilfiger Suit Set', 'tommy-hilfiger-suit-set', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033058/img-6_t35azf.jpg', 10, 499.99, 459.99, 'Elegant navy blue suit set by Tommy Hilfiger, tailored for formal occasions.', 'Premium fabric, precise stitching', 'suit set, Tommy Hilfiger, formal, navy blue', 'Exclusive', 'Available', '2025-01-06 13:25:00', 'M'),
+(7, 13, 2, 'Zara Sleeveless Top', 'zara-sleeveless-top', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033058/img-7_t3stdl.jpg', 80, 19.99, NULL, 'Pastel pink sleeveless top from Zara, perfect for summer.', 'Breathable, lightweight', 'sleeveless top, Zara, summer, pastel pink', 'Trending', 'Available', '2025-01-07 15:45:00', 'F'),
+(8, 11, 3, 'H&M Wool Sweater', 'hm-wool-sweater', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033151/img-8_bujpbu.jpg', 40, 59.99, 49.99, 'Beige wool sweater by H&M, cozy for chilly days.', 'Soft wool fabric, textured design', 'sweater, wool, H&M, cozy', 'Classic', 'Available', '2025-01-08 10:15:00', 'F'),
+(9, 7, 8, 'Prada Silk Shirt', 'prada-silk-shirt', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033058/img-9_zbb44e.jpg', 25, 399.99, 379.99, 'Ivory white silk shirt by Prada, luxurious and elegant.', 'Smooth silk fabric, premium quality', 'silk shirt, Prada, luxurious, elegant', 'Premium', 'Available', '2025-01-09 11:00:00', 'F'),
+(10, 8, 4, 'Levis Denim Shorts', 'levis-denim-shorts', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033058/img-10_n2nmew.jpg', 60, 49.99, NULL, 'Classic blue denim shorts from Levis, casual and durable.', 'High-quality denim, casual design', 'denim shorts, Levis, casual, durable', 'Hot', 'Available', '2025-01-10 14:00:00', 'M'),
+(11, 1, 7, 'Gucci Silk Blouse', 'gucci-silk-blouse', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033058/img-11_rng43m.jpg', 12, 599.99, 549.99, 'Deep emerald green silk blouse by Gucci, sleek and luxurious.', 'High-quality silk, elegant design', 'silk blouse, Gucci, luxurious, emerald green', 'Exclusive', 'Available', '2025-01-11 16:00:00', 'F'),
+(12, 9, 5, 'Tommy Hilfiger Skirt', 'tommy-hilfiger-skirt', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033057/img-12_kwjhfb.jpg', 30, 79.99, 69.99, 'Dark gray skirt by Tommy Hilfiger, with a modern and classic design.', 'Premium fabric, classic cut', 'skirt, Tommy Hilfiger, classic, gray', 'Trending', 'Available', '2025-01-12 11:45:00', 'F'),
+(13, 2, 1, 'Adidas Cardigan', 'adidas-cardigan', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033057/img-13_g7gr6p.jpg', 25, 69.99, NULL, 'Light gray cardigan by Adidas, stylish and comfortable.', 'Soft fabric, casual design', 'cardigan, Adidas, light gray, casual', 'Bestseller', 'Available', '2025-01-13 13:30:00', 'M'),
+(14, 12, 6, 'Calvin Klein T-Shirt', 'calvin-klein-tshirt', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033056/img-14_sbywfz.jpg', 100, 34.99, 29.99, 'Black cotton t-shirt by Calvin Klein, simple and durable.', 'Soft cotton, high-quality stitching', 't-shirt, Calvin Klein, casual, black', 'Sale', 'Available', '2025-01-14 09:00:00', 'M'),
+(15, 4, 8, 'Prada Elegant Dress', 'prada-elegant-dress', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033056/img-15_tx2oqu.jpg', 8, 899.99, 849.99, 'Deep crimson elegant dress by Prada, perfect for special occasions.', 'Luxurious fabric, refined design', 'elegant dress, Prada, luxurious, crimson', 'Exclusive', 'Available', '2025-01-15 17:15:00', 'F'),
+(16, 12, 7, 'Gucci Casual T-shirt', 'gucci-casual-tshirt', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033057/img-16_nsrio0.jpg', 100, 129.99, 109.99, 'Trendy navy blue t-shirt for casual wear.', 'Premium fabric, modern fit', 'tshirt, gucci', 'New', 'Active', '2023-09-01 10:00:00', 'M'),
+(17, 5, 3, 'H&M Quilted Jacket', 'hm-quilted-jacket', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033057/img-17_xhye9k.jpg', 40, 99.99, 89.99, 'Insulated olive green quilted jacket.', 'Warm, durable design', 'jacket, quilted, h&m', 'Hot', 'Active', '2023-11-15 13:00:00', 'M'),
+(18, 8, 2, 'Zara Denim Shorts', 'zara-denim-shorts', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033056/img-18_qdfgix.jpg', 110, 39.99, NULL, 'Trendy light blue denim shorts.', 'Comfortable, durable', 'shorts, denim, zara', 'Trending', 'Active', '2023-06-10 16:15:00', 'F'),
+(19, 5, 6, 'Calvin Klein Wool Coat', 'ck-wool-coat', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033056/img-19_kdk6y2.jpg', 30, 189.99, NULL, 'Premium wool coat for winter.', 'Warm, elegant fit', 'coat, wool, ck', 'Luxury', 'Active', '2023-12-20 08:45:00', 'M'),
+(20, 13, 4, 'Levis Casual Top', 'levis-casual-top', 'https://res.cloudinary.com/andevstorage/image/upload/v1738033056/img-20_enmenj.jpg', 140, 24.99, 19.99, 'Lightweight casual top in pastel blue.', 'Soft, trendy design', 'top, casual, levis', 'Sale', 'Active', '2023-10-10 14:30:00', 'F');
 
 -- --------------------------------------------------------
 
@@ -334,6 +321,7 @@ INSERT INTO `product_categories` (`p_cat_id`, `p_cat_title`, `p_cat_top`) VALUES
 (8, 'Shorts', ''),
 (9, 'Coats', ''),
 (10, 'Cardigans', ''),
+(11, 'Underwear', ''),
 (12, 'Jackets', ''),
 (13, 'Dresses', ''),
 (14, 'Skirts', ''),
@@ -350,13 +338,6 @@ CREATE TABLE `wishlist` (
   `customer_id` int(10) NOT NULL,
   `product_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `wishlist`
---
-
-INSERT INTO `wishlist` (`wishlist_id`, `customer_id`, `product_id`) VALUES
-(1, 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -456,7 +437,7 @@ ALTER TABLE `coupons`
 -- AUTO_INCREMENT de la tabla `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10103;
+  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10102;
 
 --
 -- AUTO_INCREMENT de la tabla `customer_orders`
@@ -474,7 +455,7 @@ ALTER TABLE `manufacturers`
 -- AUTO_INCREMENT de la tabla `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `payment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10102;
+  MODIFY `payment_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `pending_orders`
@@ -498,7 +479,7 @@ ALTER TABLE `product_categories`
 -- AUTO_INCREMENT de la tabla `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `wishlist_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
